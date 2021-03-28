@@ -33,9 +33,9 @@ def getQA(response):
 class QaSmartphones(scrapy.Spider):
     name = 'qa-smartphones'
     start_urls = [
-        #'https://www.amazon.com.br/ask/questions/asin/B08B9C149J',
+        'https://www.amazon.com.br/ask/questions/asin/B08B9C149J',
         'https://www.amazon.com.br/ask/questions/asin/B07XS47PVF',
-        #'https://www.amazon.com.br/ask/questions/asin//B08XVV828M'
+        'https://www.amazon.com.br/ask/questions/asin//B08XVV828M'
     ]
 
     def parse(self, response):
