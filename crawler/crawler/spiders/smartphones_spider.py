@@ -1,5 +1,6 @@
 import scrapy
 
+# gets the data from table and puts in a json format
 def get_data_from_table(response, info_path, value_path):
     infos = [x.strip() for x in response.xpath(info_path).getall()]
     values = [x.strip() for x in response.xpath(value_path).getall()]
@@ -12,7 +13,9 @@ def get_data_from_table(response, info_path, value_path):
 class Smartphones(scrapy.Spider):
     name = 'smartphones'
     start_urls = [
-        'https://www.amazon.com.br/Celular-Xiaomi-Poco-6GB-128GB/dp/B08B9C149J?ref_=Oct_s9_apbd_otopr_hd_bw_bHjJLCl&pf_rd_r=KM37FK0NZ6YVJ8KT06XS&pf_rd_p=1da659a0-948a-52ba-a216-243433981446&pf_rd_s=merchandised-search-10&pf_rd_t=BROWSE&pf_rd_i=16243803011'
+        'https://www.amazon.com.br/Celular-Xiaomi-Poco-6GB-128GB/dp/B08B9C149J',
+        'https://www.amazon.com.br/Celular-Apple-iPhone-64gb-Tela/dp/B07XS47PVF',
+        'https://www.amazon.com.br/Smartphone-Samsung-Octa-Core-Principal-Profundidade/dp/B08XVV828M'
     ]
 
     def parse(self, response):
