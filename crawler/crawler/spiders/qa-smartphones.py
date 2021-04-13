@@ -12,20 +12,30 @@ class QaSmartphones(scrapy.Spider):
     
     # Return the selected question information in a JSON format
     def extract_question_info(self, current_question):
+        # Parses question
         question = current_question.css('div.a-fixed-left-grid-col.a-col-right > a > span::text').get()
         if(question is not None):  
             question = question.strip()
             question = re.sub(r'<.[A-z]*>|\r|\n', '', question)
         else:
             question = ""
-
-        answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span').get()
+        
+        # Get and format answer
+        answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span > span.askLongText::text').getall()
+        if(answer != []):
+            answer = [ans.strip() for ans in answer]
+            answer = [s for s in answer if s != '']
+            answer = ' '.join([s for s in answer])
+        else:
+            answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span::text').get()
+        
         if(answer is not None):
             answer = answer.strip()
             answer = re.sub(r'<.[A-z]*>|\r|\n', '', answer)
         else:
             answer = ""
 
+        # Parses question id
         q_id = current_question.css('div.a-fixed-left-grid-col.a-col-right > div').attrib['id']
         if(q_id is not None):
             q_id = q_id.split('-')[1]
