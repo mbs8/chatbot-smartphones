@@ -1,0 +1,88 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - oi
+    - oooi
+    - oii
+    - olá
+    - bom dia
+    - boa tarde
+    - boa noite
+    - e ae
+    - eaew
+    - como vai
+    - como vai
+    - tudo bem
+    - tudo bem
+
+- intent: goodbye
+  examples: |
+    - tchau
+    - adeus
+    - xau
+    - falou
+    - flw
+    - xaaauu
+    - bye
+    
+- intent: affirm
+  examples: |
+    - sim
+    - s
+    - claro
+    - correto
+    - acho que sim
+    - exato
+    - exatamente
+    - isso mesmo
+    - assim mesmo
+    - isso
+    - perfeito
+    - ótimo
+
+- intent: deny
+  examples: |
+    - não
+    - n
+    - nunca
+    - acho que não
+    - não gostei
+    - de jeito nenhum
+    - errado
+    - isso tá errado
+    - NÃO
+    - claro que não
+    
+- intent: ask_help
+  examples: |
+    - preciso de ajuda
+    - você poderia me ajudar?
+    - me ajude
+    - ajuda
+    - me ajuda
+    - ajude-me
+
+- intent: ask_fact
+  examples: |
+    - quanto de RAM tem o [smartphone Xiaomi] {"entity":"product"}? 
+    - quanto de RAM tem o [iPhone] {"entity":"product"}?  
+    - quanto de RAM tem o [smartphone samsung] {"entity":"product"}? 
+    - qual o armazenamento do [iPhone] {"entity":"product"}?
+    - quantos MP tem a câmera do [iPhone] {"entity":"product"}?
+    - qual o tamanho da tela?
+    - quanto custa o [iPhone] {"entity":"product"}?
+    
+- intent: ask_qa
+  examples: |
+    - quanto tempo demora para chegar o iPhone?
+    - o iPhone é bom?
+    - vem com carregador?
+
+- intent: bot_challenge
+  examples: |
+    - você é um bot?
+    - você é humano?
+    - estou falando com um bot?
+    - estou falando com um humano?

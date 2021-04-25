@@ -1,0 +1,40 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - ask_fact
+  - ask_qa
+  - ask_help
+  - bot_challenge
+  
+entities:
+  - product
+
+responses:
+  utter_greet:
+  - text: "Oi! Compo posso ajudar?"
+  - text: "Olá, qual a sua dúvida? Será um prazer ajudar!"
+  
+  utter_goodbye:
+  - text: "Até logo, foi um prazer ajudar!"
+  - text: "Tchau! Até a próxima!"
+  
+  utter_help:
+  - text: "Estou aqui para ajudá-lo! Tente perguntar algo sobre algum smartphone (quantidade de RAM, qualidade da câmera, tamanho da tela, preço, armazenameto...)"
+  - text: "Pergunte-me informações sobre qualquer smartphone, farei o melhor para solucionar sua dúvida!"
+  
+  utter_ask_fact:
+  - text: "Fato do produto {product}"
+  
+  utter_ask_qa:
+  - text: "QA do produto {product}"
+  
+  utter_iamabot:
+  - text: "Eu sou um bot"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

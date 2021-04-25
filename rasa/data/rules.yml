@@ -1,0 +1,23 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Get product fact anytime the user enters a product name
+  steps:
+  - intent: ask_fact
+  - action: utter_ask_fact
+
+- rule: Get product qa anytime the user enters a product name
+  steps:
+  - intent: ask_qa
+  - action: utter_ask_qa
