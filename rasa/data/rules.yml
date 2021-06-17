@@ -11,13 +11,3 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
-
-- rule: Get product fact anytime the user enters a product name
-  steps:
-  - intent: ask_fact
-  - action: utter_ask_fact
-
-- rule: Get product qa anytime the user enters a product name
-  steps:
-  - intent: ask_qa
-  - action: utter_ask_qa

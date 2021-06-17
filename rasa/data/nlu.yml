@@ -63,23 +63,7 @@ nlu:
     - ajuda
     - me ajuda
     - ajude-me
-
-- intent: ask_fact
-  examples: |
-    - quanto de RAM tem o [smartphone Xiaomi] {"entity":"product"}? 
-    - quanto de RAM tem o [iPhone] {"entity":"product"}?  
-    - quanto de RAM tem o [smartphone samsung] {"entity":"product"}? 
-    - qual o armazenamento do [iPhone] {"entity":"product"}?
-    - quantos MP tem a câmera do [iPhone] {"entity":"product"}?
-    - qual o tamanho da tela?
-    - quanto custa o [iPhone] {"entity":"product"}?
     
-- intent: ask_qa
-  examples: |
-    - quanto tempo demora para chegar o iPhone?
-    - o iPhone é bom?
-    - vem com carregador?
-
 - intent: bot_challenge
   examples: |
     - você é um bot?
@@ -99,3 +83,19 @@ nlu:
     - informações do [iPhone](product)
     - informações do [Xiaomi](product)
     - informações do [Samsung](product)
+
+- intent: check_stock
+  examples: | 
+    - Verificar estoque
+
+- intent: get_price
+  examples: |
+    - consulta de preço
+
+- intent: inform_product
+  examples: |
+    - [iphone](product)
+    - [samsung](product)
+    - [celular Xiaomi](product)
+    - [iphone X](product)
+    - [Samsung A12](product)

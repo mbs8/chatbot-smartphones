@@ -5,10 +5,12 @@ intents:
   - goodbye
   - affirm
   - deny
-  - ask_fact
-  - ask_qa
   - ask_help
   - get_product_list
+  - get_product_fact
+  - check_stock
+  - get_price
+  - inform_product
   - bot_challenge
   
 entities:
@@ -25,8 +27,17 @@ slots:
 
 responses:
   utter_greet:
-  - text: "Oi! Compo posso ajudar?"
-  - text: "Olá, qual a sua dúvida? Será um prazer ajudar!"
+  - buttons:
+    - payload: Verificar estoque
+      title: Pesquisar smartphone no estoque
+    - payload: Duvidas sobre um produto
+      title: Dúvidas sobre um produto
+    - payload: Consulta de preço
+      title: Consultar preço
+    - payload: Produtos?
+      title: Listar produtos
+    button_type: vertical
+    text: "Olá, sou o Celito, como posso te ajudar hoje?"
   
   utter_goodbye:
   - text: "Até logo, foi um prazer ajudar!"
@@ -36,20 +47,15 @@ responses:
   - text: "Estou aqui para ajudá-lo! Tente perguntar algo sobre algum smartphone (quantidade de RAM, qualidade da câmera, tamanho da tela, preço, armazenameto...)"
   - text: "Pergunte-me informações sobre qualquer smartphone, farei o melhor para solucionar sua dúvida!"
   
-  utter_ask_fact:
-  - text: "Fato do produto {product}"
-  
-  utter_ask_qa:
-  - text: "QA do produto {product}"
-  
   utter_iamabot:
   - text: "Eu sou um bot"
 
   utter_list_products:
   - text: "Esses são os nossos produtos: "
 
-  utter_hello_world:
-  - text: "10"
+  utter_ask_product:
+  - text: "Claro! Qual a marca e modelo do smartphone?"
+  - text: "Posso te ajudar. Me informa a marca e modelo do smartphone"
 
 actions:
   - action_list_products

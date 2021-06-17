@@ -1,44 +1,25 @@
 version: "2.0"
 
 stories:
-- story: get_fact_1
+- story: greet
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_help
-  - action: utter_help
-  - intent: ask_fact
-  - action: utter_ask_fact
-
-- story: get_fact_2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_fact
-  - action: utter_ask_fact
-
-- story: get_qa_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_help
-  - action: utter_help
-  - intent: ask_qa
-  - action: utter_ask_qa
-  
-- story: get_qa_2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_qa
-  - action: utter_ask_qa
 
 - story: get_products
   steps:
   - intent: get_product_list
+  - action: utter_list_products
   - action: action_list_products
 
 - story: get_product_fact
   steps:
   - intent: get_product_fact
+  - action: action_product_info
+
+- story: check_stock
+  steps:
+  - intent: check_stock
+  - action: utter_ask_product
+  - intent: inform_product
   - action: action_product_info

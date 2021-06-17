@@ -15,11 +15,11 @@ class EsHandle:
     # Get the product in the 'products' index by name
     def get_product_by_name(self, name):
         query_body = {
-        "query": {
-            "match": {
-                "product": name
+            "query": {
+                "match": {
+                    "product": name
+                }
             }
-        }
         }
         possible_products = []
         query = self._es.search(index=self._products_index, body=query_body)['hits']['hits']
