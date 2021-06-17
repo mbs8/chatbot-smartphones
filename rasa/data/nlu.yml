@@ -86,3 +86,16 @@ nlu:
     - você é humano?
     - estou falando com um bot?
     - estou falando com um humano?
+
+- intent: get_product_list
+  examples: |
+    - quais produtos vocês possuem?
+    - produtos?
+    - me mostre celulares
+    - quais smartphones a loja tem?
+
+- intent: get_product_fact
+  examples: |
+    - informações do [iPhone](product)
+    - informações do [Xiaomi](product)
+    - informações do [Samsung](product)

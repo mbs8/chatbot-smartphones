@@ -8,10 +8,20 @@ intents:
   - ask_fact
   - ask_qa
   - ask_help
+  - get_product_list
   - bot_challenge
   
 entities:
   - product
+  - question
+
+slots:
+  product:
+    type: text
+    influence_conversation: false
+  question:
+    type: text
+    influence_conversation: false    
 
 responses:
   utter_greet:
@@ -34,6 +44,16 @@ responses:
   
   utter_iamabot:
   - text: "Eu sou um bot"
+
+  utter_list_products:
+  - text: "Esses são os nossos produtos: "
+
+  utter_hello_world:
+  - text: "10"
+
+actions:
+  - action_list_products
+  - action_product_info
 
 session_config:
   session_expiration_time: 60

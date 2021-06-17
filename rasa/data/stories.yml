@@ -32,3 +32,13 @@ stories:
   - action: utter_greet
   - intent: ask_qa
   - action: utter_ask_qa
+
+- story: get_products
+  steps:
+  - intent: get_product_list
+  - action: action_list_products
+
+- story: get_product_fact
+  steps:
+  - intent: get_product_fact
+  - action: action_product_info
