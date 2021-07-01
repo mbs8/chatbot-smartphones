@@ -1,25 +1,43 @@
 version: "2.0"
 
 stories:
-- story: greet
+- story: user greets and start conversation
   steps:
   - intent: greet
   - action: utter_greet
 
-- story: get_products
+- story: User ask for help
+  steps:
+  - intent: ask_help
+  - action: utter_help
+
+- story: User asks for a product list
   steps:
   - intent: get_product_list
   - action: utter_list_products
   - action: action_list_products
 
-- story: get_product_fact
-  steps:
-  - intent: get_product_fact
-  - action: action_product_info
-
-- story: check_stock
+- story: User wants to check if a smartphone is in stock
   steps:
   - intent: check_stock
   - action: utter_ask_product
   - intent: inform_product
-  - action: action_product_info
+  - action: action_check_stock
+
+- story: User wants to know specifications of a product
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - action: action_product_fact
+
+- story: User requiring the price of a product
+  steps:
+  - intent: get_price
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: action_product_price
+
+

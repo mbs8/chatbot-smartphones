@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -13,10 +12,10 @@ nlu:
     - e ae
     - eaew
     - como vai
-    - como vai
     - tudo bem
-    - tudo bem
-
+    - ola
+    - start
+    - /start
 - intent: goodbye
   examples: |
     - tchau
@@ -26,7 +25,6 @@ nlu:
     - flw
     - xaaauu
     - bye
-    
 - intent: affirm
   examples: |
     - sim
@@ -41,7 +39,6 @@ nlu:
     - isso
     - perfeito
     - ótimo
-
 - intent: deny
   examples: |
     - não
@@ -54,7 +51,6 @@ nlu:
     - isso tá errado
     - NÃO
     - claro que não
-    
 - intent: ask_help
   examples: |
     - preciso de ajuda
@@ -63,35 +59,35 @@ nlu:
     - ajuda
     - me ajuda
     - ajude-me
-    
 - intent: bot_challenge
   examples: |
     - você é um bot?
     - você é humano?
     - estou falando com um bot?
     - estou falando com um humano?
-
 - intent: get_product_list
   examples: |
     - quais produtos vocês possuem?
     - produtos?
     - me mostre celulares
     - quais smartphones a loja tem?
-
 - intent: get_product_fact
   examples: |
-    - informações do [iPhone](product)
-    - informações do [Xiaomi](product)
-    - informações do [Samsung](product)
-
+    - Duvidas sobre um produto
+    - tenho duvidas sobre um produto
+    - gostaria de saber mais sobre um celular
 - intent: check_stock
-  examples: | 
+  examples: |
     - Verificar estoque
-
+    - verificar estoque
+    - Vocês tem iphone em estoque?
 - intent: get_price
   examples: |
-    - consulta de preço
-
+    - Consulta de preço
+    - diga-me o preço de um produto
+    - quanto custa um celular?
+    - quanto custa o smartphone
+    - qual o valor do iPhone?
 - intent: inform_product
   examples: |
     - [iphone](product)
@@ -99,3 +95,22 @@ nlu:
     - [celular Xiaomi](product)
     - [iphone X](product)
     - [Samsung A12](product)
+    - [Xiaomi](product)
+    - [Celular](product)
+    - [Smartphone](product)
+    - [iphone](product)
+    - [samsung](product)
+    - [samsung A12](product)
+    - [iphone](product) 8
+    - [Xiaomi Poc](product)
+- intent: inform_fact
+  examples: |
+    - [RAM](fact)
+    - [Sistema Operacional](fact)
+    - [Capacidade de armazenamento digital](fact)
+    - [Tamanho de tela vertical](fact)
+    - [Tecnologia da tela](fact)
+    - [Cor](fact)
+    - [Peso do produto](fact)
+    - [RAM](fact)
+    - [Cor](fact)

@@ -1,30 +1,34 @@
-version: "2.0"
-
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - ask_help
-  - get_product_list
-  - get_product_fact
-  - check_stock
-  - get_price
-  - inform_product
-  - bot_challenge
-  
+- get_price
+- get_product_fact
+- inform_product
+- greet
+- check_stock
+- inform_fact
+- goodbye
+- affirm
+- deny
+- ask_help
+- get_product_list
+- bot_challenge
 entities:
-  - product
-  - question
-
+- fact
+- product
+- question
 slots:
   product:
     type: text
     influence_conversation: false
   question:
     type: text
-    influence_conversation: false    
-
+    influence_conversation: false
+  fact:
+    type: text
+    influence_conversation: false
 responses:
   utter_greet:
   - buttons:
@@ -37,30 +41,25 @@ responses:
     - payload: Produtos?
       title: Listar produtos
     button_type: vertical
-    text: "Olá, sou o Celito, como posso te ajudar hoje?"
-  
+    text: Olá, sou o Celito, como posso te ajudar hoje?
   utter_goodbye:
-  - text: "Até logo, foi um prazer ajudar!"
-  - text: "Tchau! Até a próxima!"
-  
+  - text: Até logo, foi um prazer ajudar!
+  - text: Tchau! Até a próxima!
   utter_help:
-  - text: "Estou aqui para ajudá-lo! Tente perguntar algo sobre algum smartphone (quantidade de RAM, qualidade da câmera, tamanho da tela, preço, armazenameto...)"
-  - text: "Pergunte-me informações sobre qualquer smartphone, farei o melhor para solucionar sua dúvida!"
-  
+  - text: Estou aqui para ajudá-lo! Tente perguntar algo sobre algum smartphone (quantidade de RAM, qualidade da câmera, tamanho da tela, preço, armazenameto...)
+  - text: Pergunte-me informações sobre qualquer smartphone, farei o melhor para solucionar sua dúvida!
   utter_iamabot:
-  - text: "Eu sou um bot"
-
+  - text: Eu sou um bot
   utter_list_products:
-  - text: "Esses são os nossos produtos: "
-
+  - text: 'Esses são os nossos produtos: '
   utter_ask_product:
-  - text: "Claro! Qual a marca e modelo do smartphone?"
-  - text: "Posso te ajudar. Me informa a marca e modelo do smartphone"
-
+  - text: Claro! Qual a marca e modelo do smartphone?
+  - text: Posso te ajudar. Me informa a marca e modelo do smartphone
+  utter_ask_fact:
+  - text: Qual informação você deseja saber?
+  - text: Sobre o que você gostaria de saber?
 actions:
-  - action_list_products
-  - action_product_info
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+- action_check_stock
+- action_list_products
+- action_product_fact
+- action_product_price
