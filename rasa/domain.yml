@@ -3,22 +3,22 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- get_price
-- get_product_fact
-- inform_product
-- greet
-- check_stock
-- inform_fact
-- goodbye
-- affirm
-- deny
-- ask_help
-- get_product_list
-- bot_challenge
+  - get_price
+  - get_product_fact
+  - inform_product
+  - greet
+  - check_stock
+  - inform_fact
+  - goodbye
+  - affirm
+  - deny
+  - ask_help
+  - get_product_list
+  - bot_challenge
 entities:
-- fact
-- product
-- question
+  - fact
+  - product
+  - question
 slots:
   product:
     type: text
@@ -59,7 +59,7 @@ responses:
   - text: Qual informação você deseja saber?
   - text: Sobre o que você gostaria de saber?
 actions:
-- action_check_stock
-- action_list_products
-- action_product_fact
-- action_product_price
+  - action_check_stock
+  - action_list_products
+  - action_product_fact
+  - action_product_price
