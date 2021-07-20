@@ -69,6 +69,11 @@ class QaSmartphones(scrapy.Spider):
         asin = url[5+idx:].split('/')[0]
         return asin
 
+    # def build_index(self, asin, qa_list):
+    #     qa_index = {}
+    #     for qa in qa_list:
+            
+
     def parse(self, response):
         # Number of questions saved from the product
         question_count = response.meta.get('question_count', 0)
@@ -90,10 +95,13 @@ class QaSmartphones(scrapy.Spider):
             yield scrapy.Request(next_page, callback=self.parse, meta=meta)
                 
         else:
-            yield {
-                'asin': asin,
-                'qa': qa_list
-            }
+            for qa in qa_list:    
+                yield {
+                    'asin': asin,
+                    'question': qa.get('question'),
+                    'answer': qa.get('answer'),
+                    'q_id': qa.get('q_id')
+                }
     
 
         
