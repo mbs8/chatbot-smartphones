@@ -30,6 +30,35 @@ class EsHandle:
         
         return possible_products
 
+    def get_qa_by_asin(self, asin, question):
+        query_body = {
+            "query": {
+                "bool": {
+                "must": [
+                    {
+                    "match": {
+                        "asin": asin
+                    }
+                    },
+                    {
+                    "match": {
+                        "question": question
+                    }
+                    }
+                ]
+                }
+            }
+            }
+
+        possible_answers = []
+        query = self._es.search(index=self._qa_index, body=query_body)['hits']['hits']
+        
+        for p in query:
+            possible_answers.append(p['_source'])
+        
+        return possible_answers
+
+
     # Get the products names and id's from the 'products' index
     def get_products(self):
         result = []
@@ -53,6 +82,19 @@ class EsHandle:
             possible_products.append({"Produto": title, product_fact: value})
         
         return possible_products
+
+    def get_product_qa(self, product_name, question):
+        products_jsons = self.get_product_by_name(product_name)
+        if(len(products_jsons) < 1):
+            return []
+
+        product = products_jsons[0]
+        title = product["product"]
+        add_info_json = product["additional_info"]
+        asin = add_info_json["ASIN"]
+        
+        qa_list = self.get_qa_by_asin(asin, question)
+        return {"Produto": title, "qa": qa_list}
 
     def get_product_price(self, product_name):
         products_jsons = self.get_product_by_name(product_name)

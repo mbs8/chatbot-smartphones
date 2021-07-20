@@ -5,6 +5,7 @@ session_config:
 intents:
   - get_price
   - get_product_fact
+  - get_product_qa
   - inform_product
   - greet
   - check_stock
@@ -55,7 +56,7 @@ responses:
   utter_ask_product:
   - text: Claro! Qual a marca e modelo do smartphone?
   - text: Posso te ajudar. Me informa a marca e modelo do smartphone
-  utter_ask_fact:
+  utter_ask_info:
   - text: Qual informação você deseja saber?
   - text: Sobre o que você gostaria de saber?
 actions:
@@ -63,3 +64,4 @@ actions:
   - action_list_products
   - action_product_fact
   - action_product_price
+  - action_product_qa

@@ -29,7 +29,7 @@ stories:
   - intent: get_product_fact
   - action: utter_ask_product
   - intent: inform_product
-  - action: utter_ask_fact
+  - action: utter_ask_info
   - intent: inform_fact
   - action: action_product_fact
 
@@ -39,5 +39,11 @@ stories:
   - action: utter_ask_product
   - intent: inform_product
   - action: action_product_price
+
+- story: User asks non_fact information
+  steps:
+  - intent: get_product_qa
+  - action: action_product_qa
+
 
 

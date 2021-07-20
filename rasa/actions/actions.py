@@ -125,3 +125,35 @@ class ActionCheckStock(Action):
             dispatcher.utter_message(response="utter_list_products", text=msg)
             slots_to_reset = ["product"]
             return [SlotSet(slot) for slot in slots_to_reset]
+
+class ActionGetProductQA(Action):
+
+    def name(self) -> Text:
+        return "action_product_qa"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+            product_name = tracker.get_slot("product")
+            question = tracker.get_slot("question")
+            print(f"Produto: {product_name} - Pergunta: {question}")
+            answer = es_handle.get_product_qa(product_name, question)
+            text_to_user = []
+            if(answer == []):
+                text_to_user = "Infelizmente não consegui encontrar resposta para sua pergunta"
+            else:
+                # format output to user
+                msg = [f"Veja o que encontrei sobre o produto {answer['Produto']}:"]
+                qa = answer["qa"][0]
+                msg.append(f"Pergunta: {qa['question']}")
+                msg.append(f"Resposta: {qa['answer']}")
+                msg = "\n".join(msg)
+                text_to_user.append(msg)
+                text_to_user.append('\n')
+
+                text_to_user = "\n".join(text_to_user)
+
+            dispatcher.utter_message(response="utter_list_products", text=text_to_user)
+            slots_to_reset = ["product", "question"]
+            return [SlotSet(slot) for slot in slots_to_reset]

@@ -76,6 +76,14 @@ nlu:
     - Duvidas sobre um produto
     - tenho duvidas sobre um produto
     - gostaria de saber mais sobre um celular
+- intent: get_product_qa
+  examples: |
+    - O [celular](product) [vem com carregador](question)
+    - [iPhone](product) [é de vidro](question)
+    - [O Xiaomi](product) [é original](question)
+    - [O iPhone X](product) [tem 4g](question)
+    - [O iPhone](product) [vem com fone de ouvido](question)
+    - [Xiaomi](product) [tem mais cores](question)
 - intent: check_stock
   examples: |
     - Verificar estoque
