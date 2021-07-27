@@ -28,8 +28,18 @@ slots:
     type: text
     influence_conversation: false
   fact:
-    type: text
-    influence_conversation: false
+    type: categorical
+    values:
+      - Memória RAM
+      - Sistema Operacional
+      - Capacidade de armazenamento
+      - Tamanho de tela vertical
+      - Cor
+      - Peso do produto
+      - Dimensões do produto
+      - Marca
+      - Outra
+    influence_conversation: true
 responses:
   utter_greet:
   - buttons:
@@ -56,9 +66,30 @@ responses:
   utter_ask_product:
   - text: Claro! Qual a marca e modelo do smartphone?
   - text: Posso te ajudar. Me informa a marca e modelo do smartphone
-  utter_ask_info:
-  - text: Qual informação você deseja saber?
-  - text: Sobre o que você gostaria de saber?
+  utter_ask_fact:
+  - buttons:
+    - payload: Sistema operacional
+      title: Sistema operacional
+    - payload: RAM
+      title: Memória RAM
+    - payload: Tamanho de tela vertical
+      title: Tamanho de tela
+    - payload: Capacidade de armazenamento digital
+      title: Capacidade de armazenamento
+    - payload: Cor
+      title: Cor
+    - payload: Peso do produto
+      title: Peso do produto
+    - payload: Marca
+      title: Fabricante / Marca
+    - payload: Dimensões do produto
+      title: Dimensões do produto
+    - payload: Outra
+      title: Outra
+    button_type: vertical
+    text: Sobre qual informação você gostaria de saber?
+  utter_ask_qa:
+  - text: Não encontrou sua dúvida na lista? Tudo bem! Me fala, o que deseja saber sobre o produto?
 actions:
   - action_check_stock
   - action_list_products

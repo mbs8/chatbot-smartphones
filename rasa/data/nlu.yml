@@ -25,6 +25,9 @@ nlu:
     - flw
     - xaaauu
     - bye
+    - obrigado
+    - até logo
+    - so isso
 - intent: affirm
   examples: |
     - sim
@@ -54,48 +57,39 @@ nlu:
 - intent: ask_help
   examples: |
     - preciso de ajuda
-    - você poderia me ajudar?
+    - você poderia me ajudar
     - me ajude
     - ajuda
     - me ajuda
     - ajude-me
 - intent: bot_challenge
   examples: |
-    - você é um bot?
-    - você é humano?
-    - estou falando com um bot?
-    - estou falando com um humano?
+    - você é um bot
+    - você é humano
+    - estou falando com um bot
+    - estou falando com um humano
 - intent: get_product_list
   examples: |
-    - quais produtos vocês possuem?
-    - produtos?
+    - quais produtos vocês possuem
+    - produtos
     - me mostre celulares
-    - quais smartphones a loja tem?
+    - quais smartphones a loja tem
 - intent: get_product_fact
   examples: |
     - Duvidas sobre um produto
     - tenho duvidas sobre um produto
     - gostaria de saber mais sobre um celular
-- intent: get_product_qa
-  examples: |
-    - O [celular](product) [vem com carregador](question)
-    - [iPhone](product) [é de vidro](question)
-    - [O Xiaomi](product) [é original](question)
-    - [O iPhone X](product) [tem 4g](question)
-    - [O iPhone](product) [vem com fone de ouvido](question)
-    - [Xiaomi](product) [tem mais cores](question)
 - intent: check_stock
   examples: |
-    - Verificar estoque
     - verificar estoque
-    - Vocês tem iphone em estoque?
+    - Vocês tem iphone em estoque
 - intent: get_price
   examples: |
     - Consulta de preço
     - diga-me o preço de um produto
-    - quanto custa um celular?
+    - quanto custa um celular
     - quanto custa o smartphone
-    - qual o valor do iPhone?
+    - qual o valor do iPhone
 - intent: inform_product
   examples: |
     - [iphone](product)
@@ -117,8 +111,61 @@ nlu:
     - [Sistema Operacional](fact)
     - [Capacidade de armazenamento digital](fact)
     - [Tamanho de tela vertical](fact)
-    - [Tecnologia da tela](fact)
     - [Cor](fact)
     - [Peso do produto](fact)
-    - [RAM](fact)
-    - [Cor](fact)
+    - [Dimensões do produto](fact)
+    - [Marca](fact)
+    - [Outra](fact)
+- intent: get_product_qa
+  examples: |
+    - [vem com carregador](question)
+    - [vem com nota fiscal](question)
+    - [tem carregador](question)
+    - [tem nota fiscal](question)
+    - [tem pronta entrega](question)
+    - [o que tem na caixa](question)
+    - [acompanha fone de ouvido](question)
+    - [tem os itens necessários de uso](question)
+    - [qual o prazo de entrega](question)
+    - [versao global](question)
+    - [entregam em pernambuco](question)
+    - [tem na cor azul](question)
+    - [pode dividir em quantas vezes](question)
+    - [consigo parcelar](question)
+    - [emite NF](question)
+    - [ele é 5g](question)
+    - [é 4g](question)
+    - [é bom para instagram](question)
+    - [parcela no cartão](question)
+    - [qual a garantia](question)
+    - [tem fone sem fio](question)
+    - [gorilla glass](question)
+    - [chega em quantos dias](question)
+    - [qual o processador](question)
+    - [é original mesmo](question)
+    - [aceita cheque](question)
+    - [é homologado pela Anatel](question)
+    - [tem micro sd](question)
+    - [Divide em quantas vezes](question)
+    - [tem na cor preta](question)
+    - [tem a cor azul](question)
+    - [tem a cor cinza](question)
+    - [tem na cor branco](question)
+    - [tem a cor](question)
+    - [qual o sistema](question)
+    - [possui defeito](question)
+    - [qual a voltagem](question)
+    - [qual a voltagem do carregador](question)
+    - [é de vidro](question)
+    - [tem vermelho](question)
+    - [quando terá novamente em estoque](question)
+    - [compatível com 4g](question)
+    - [serei taxado](question)
+    - [o que acompanho o aparelho](question)
+    - [garantia de quantos meses](question)
+    - [outras cores](question)
+    - [possui outras cores](question)
+    - [tem mais cores](question)
+    - [suporta cabo](question)
+    - [suporta como acessório](question)
+    - [Tem em estoque](question)

@@ -113,7 +113,7 @@ class ActionCheckStock(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
             product_name = tracker.get_slot("product")
-            possible_products = es_handle.get_product_url(product_name)
+            possible_products = es_handle.get_product_price(product_name)
 
             if(possible_products == []):
                 msg = "Infelizmente não possuímos esse produto em estoque."
@@ -137,11 +137,13 @@ class ActionGetProductQA(Action):
 
             product_name = tracker.get_slot("product")
             question = tracker.get_slot("question")
-            print(f"Produto: {product_name} - Pergunta: {question}")
             answer = es_handle.get_product_qa(product_name, question)
             text_to_user = []
+
             if(answer == []):
-                text_to_user = "Infelizmente não consegui encontrar resposta para sua pergunta"
+                text_to_user = ["Infelizmente não encontrei esse produto"]
+            elif(answer["qa"] == []):
+                text_to_user.append("Infelizmente não consegui encontrar resposta para sua pergunta")
             else:
                 # format output to user
                 msg = [f"Veja o que encontrei sobre o produto {answer['Produto']}:"]
@@ -152,8 +154,10 @@ class ActionGetProductQA(Action):
                 text_to_user.append(msg)
                 text_to_user.append('\n')
 
-                text_to_user = "\n".join(text_to_user)
-
+            if(answer != []):
+                text_to_user.append(f"Cheque a página do produto para mais detalhes: {answer.get('URL')}")
+                
+            text_to_user = "\n".join(text_to_user)
             dispatcher.utter_message(response="utter_list_products", text=text_to_user)
-            slots_to_reset = ["product", "question"]
+            slots_to_reset = ["product", "question", "fact"]
             return [SlotSet(slot) for slot in slots_to_reset]

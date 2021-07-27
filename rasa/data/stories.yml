@@ -24,14 +24,108 @@ stories:
   - intent: inform_product
   - action: action_check_stock
 
-- story: User wants to know specifications of a product
+- story: User wants to know factual information (RAM)
   steps:
   - intent: get_product_fact
   - action: utter_ask_product
   - intent: inform_product
-  - action: utter_ask_info
+  - action: utter_ask_fact
   - intent: inform_fact
+  - slot_was_set:
+    - fact: RAM
   - action: action_product_fact
+
+- story: User wants to know factual information (OS)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Sistema Operacional
+  - action: action_product_fact
+
+- story: User wants to know factual information (storage)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Capacidade de armazenamento digital
+  - action: action_product_fact
+
+- story: User wants to know factual information (Screen)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Tamanho de tela vertical 
+  - action: action_product_fact
+
+- story: User wants to know factual information (Color)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Cor
+  - action: action_product_fact
+
+- story: User wants to know factual information (weight)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Peso do produto
+  - action: action_product_fact
+
+- story: User wants to know factual information (Dimensions)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Dimensões do produto
+  - action: action_product_fact
+
+- story: User wants to know factual information (Brand)
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Marca
+  - action: action_product_fact
+
+- story: User wants to know specifications of a product that isn't a factual information
+  steps:
+  - intent: get_product_fact
+  - action: utter_ask_product
+  - intent: inform_product
+  - action: utter_ask_fact
+  - intent: inform_fact
+  - slot_was_set:
+    - fact: Outra
+  - action: utter_ask_qa
+  - intent: get_product_qa
+  - slot_was_set:
+    - fact: Outra
+  - action: action_product_qa
 
 - story: User requiring the price of a product
   steps:
@@ -39,11 +133,6 @@ stories:
   - action: utter_ask_product
   - intent: inform_product
   - action: action_product_price
-
-- story: User asks non_fact information
-  steps:
-  - intent: get_product_qa
-  - action: action_product_qa
 
 
 
