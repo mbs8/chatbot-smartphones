@@ -1,4 +1,5 @@
 import scrapy
+import pandas as pd
 
 # gets the data from table and puts in a json format
 def get_data_from_table(response, info_path, value_path):
@@ -30,14 +31,14 @@ def get_title_product_price(response):
         price = ""
         
     return title, product, price
+
+def get_product_urls():
+    df = pd.read_csv("urls.csv")
+    return list(df["product"])
         
 class Smartphones(scrapy.Spider):
     name = 'smartphones'
-    start_urls = [
-        'https://www.amazon.com.br/Celular-Xiaomi-Poco-6GB-128GB/dp/B08B9C149J',
-        'https://www.amazon.com.br/Celular-Apple-iPhone-64gb-Tela/dp/B07XS47PVF',
-        'https://www.amazon.com.br/Smartphone-Samsung-Octa-Core-Principal-Profundidade/dp/B08XVV828M'
-    ]
+    start_urls = get_product_urls()
 
     def parse(self, response):
         title, product, price = get_title_product_price(response)

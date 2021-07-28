@@ -1,15 +1,18 @@
 import scrapy
+import sys
 import re
+import pandas as pd
+
+def get_qa_urls():
+    print(sys.path)
+    df = pd.read_csv("urls.csv")
+    return list(df["qa"])
 
 class QaSmartphones(scrapy.Spider):
     question_limit = 50
     name = 'qa-smartphones'
-    start_urls = [
-        'https://www.amazon.com.br/ask/questions/asin/B08B9C149J/ref=ask_ql_psf_ql_hza?isAnswered=true',
-        'https://www.amazon.com.br/ask/questions/asin/B07XS47PVF/ref=ask_ql_psf_ql_hza?isAnswered=true',
-        'https://www.amazon.com.br/ask/questions/asin/B08XVV828M/ref=ask_ql_psf_ql_hza?isAnswered=true'
-    ]
-    
+    start_urls = get_qa_urls()
+
     # Return the selected question information in a JSON format
     def extract_question_info(self, current_question):
         # Parses question
