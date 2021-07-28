@@ -5,9 +5,9 @@ class QaSmartphones(scrapy.Spider):
     question_limit = 50
     name = 'qa-smartphones'
     start_urls = [
-        'https://www.amazon.com.br/ask/questions/asin/B08B9C149J',
-        'https://www.amazon.com.br/ask/questions/asin/B07XS47PVF',
-        'https://www.amazon.com.br/ask/questions/asin/B08XVV828M'
+        'https://www.amazon.com.br/ask/questions/asin/B08B9C149J/ref=ask_ql_psf_ql_hza?isAnswered=true',
+        'https://www.amazon.com.br/ask/questions/asin/B07XS47PVF/ref=ask_ql_psf_ql_hza?isAnswered=true',
+        'https://www.amazon.com.br/ask/questions/asin/B08XVV828M/ref=ask_ql_psf_ql_hza?isAnswered=true'
     ]
     
     # Return the selected question information in a JSON format
@@ -22,16 +22,13 @@ class QaSmartphones(scrapy.Spider):
         
         # Get and format answer
         answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span > span.askLongText::text').getall()
+        if(answer == []):
+            answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span::text').getall()
+
         if(answer != []):
             answer = [ans.strip() for ans in answer]
             answer = [s for s in answer if s != '']
             answer = ' '.join([s for s in answer])
-        else:
-            answer = current_question.css('div.a-fixed-left-grid-col.a-col-right > span::text').get()
-        
-        if(answer is not None):
-            answer = answer.strip()
-            answer = re.sub(r'<.[A-z]*>|\r|\n', '', answer)
         else:
             answer = ""
 
