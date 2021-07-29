@@ -143,3 +143,6 @@ rasa/credentials.yml
 # training results and datasets
 rasa/train_test_split
 rasa/results
+
+# logs and pid files
+logs
