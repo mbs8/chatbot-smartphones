@@ -136,3 +136,6 @@ rasa/models
 
 # backup folder
 backup
+
+# removes credentials file from git
+rasa/credentials.yml
