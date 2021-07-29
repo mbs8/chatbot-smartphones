@@ -11,12 +11,6 @@ stories:
   - intent: ask_help
   - action: utter_help
 
-- story: User asks for a product list
-  steps:
-  - intent: get_product_list
-  - action: utter_list_products
-  - action: action_list_products
-
 - story: User wants to check if a smartphone is in stock
   steps:
   - intent: check_stock

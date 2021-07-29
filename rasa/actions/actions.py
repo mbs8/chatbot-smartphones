@@ -13,44 +13,6 @@ import json
 
 from actions.handles.EsHandle import es_handle
 
-
-class ActionGetProducts(Action):
-
-    def name(self) -> Text:
-        return "action_list_products"
-    
-    async def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-            products = es_handle.get_products()
-            
-            products = "\n".join([x[0] for x in products])
-            
-            dispatcher.utter_message(response="utter_list_products", text=products)
-
-            return []
-
-class ActionGetProductInfoByName(Action):
-
-    def name(self) -> Text:
-        return "action_product_info"
-    
-    async def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-            product_name = tracker.get_slot("product")
-            result = es_handle.get_product_by_name(product_name)
-            if(result == []):
-                product_info = "Infelizmente não possuímos esse produto em estoque."
-            else:
-                product_info = json.dumps(result)
-            
-            dispatcher.utter_message(response="utter_list_products", text=product_info)
-
-            return [SlotSet("product", None)]
-
 class ActionGetProductFact(Action):
 
     def name(self) -> Text:
@@ -64,9 +26,14 @@ class ActionGetProductFact(Action):
             fact = tracker.get_slot("fact")
             possible_products = es_handle.get_product_fact(product_name, fact)
             text_to_user = []
+            attachments = []
             if(possible_products == []):
                 text_to_user = "Infelizmente não possuímos esse produto em estoque."
             else:
+                # just top 3 products
+                if(len(possible_products) > 3):
+                    possible_products = possible_products[:2]
+
                 # format output to user
                 for prod in possible_products:
                     msg = []
@@ -74,10 +41,12 @@ class ActionGetProductFact(Action):
                         msg.append(f"{key}: {prod[key]}")
                     msg = " - ".join(msg)
                     text_to_user.append(msg)
+                    attachments.append(prod["url"])
 
                 text_to_user = "\n".join(text_to_user)
+                attachments = "\n".join(attachments)
 
-            dispatcher.utter_message(response="utter_list_products", text=text_to_user)
+            dispatcher.utter_message(response="utter_list_products", text=text_to_user, attachment=attachments)
             slots_to_reset = ["product", "fact"]
             return [SlotSet(slot) for slot in slots_to_reset]
 
@@ -96,6 +65,9 @@ class ActionGetProductPrice(Action):
             if(possible_products == []):
                 msg = "Infelizmente não possuímos esse produto em estoque."
             else:
+                # just top 3 products
+                if(len(possible_products) > 3):
+                    possible_products = possible_products[:2]
                 msg = [" - ".join(prod.values()) for prod in possible_products]
                 msg = "\n".join(msg)
             
@@ -118,6 +90,9 @@ class ActionCheckStock(Action):
             if(possible_products == []):
                 msg = "Infelizmente não possuímos esse produto em estoque."
             else:
+                # just top 3 products
+                if(len(possible_products) > 3):
+                    possible_products = possible_products[:2]
                 prods = [" - ".join(prod.values()) for prod in possible_products]
                 prods = "\n".join(prods)
                 msg = f"Nós temos esse(s) produto(s) em estoque:\n{prods}\nAcesse o link para mais detalhes!"
@@ -156,7 +131,7 @@ class ActionGetProductQA(Action):
 
             if(answer != []):
                 text_to_user.append(f"Cheque a página do produto para mais detalhes: {answer.get('URL')}")
-                
+
             text_to_user = "\n".join(text_to_user)
             dispatcher.utter_message(response="utter_list_products", text=text_to_user)
             slots_to_reset = ["product", "question", "fact"]

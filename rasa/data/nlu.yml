@@ -68,12 +68,6 @@ nlu:
     - você é humano
     - estou falando com um bot
     - estou falando com um humano
-- intent: get_product_list
-  examples: |
-    - quais produtos vocês possuem
-    - produtos
-    - me mostre celulares
-    - quais smartphones a loja tem
 - intent: get_product_fact
   examples: |
     - Duvidas sobre um produto
@@ -100,11 +94,27 @@ nlu:
     - [Xiaomi](product)
     - [Celular](product)
     - [Smartphone](product)
-    - [iphone](product)
+    - [iphone 10](product)
     - [samsung](product)
     - [samsung A12](product)
-    - [iphone](product) 8
+    - [iphone 8](product)
     - [Xiaomi Poc](product)
+    - [Nokia](product)
+    - [apple](product)
+    - [motorola](product)
+    - [moto G](product)
+    - [moto X](product)
+    - [moto](product)
+    - [LG](product)
+    - [Positivo](product)
+    - [Realme](product)
+    - [Mi](product)
+    - [Multilaser](product)
+    - [Xaiomi](product)
+    - [Oneplus](product)
+    - [Nokia Brasil](product)
+    - [Android](product)
+    - [iOS](product)
 - intent: inform_fact
   examples: |
     - [RAM](fact)
@@ -169,3 +179,4 @@ nlu:
     - [suporta cabo](question)
     - [suporta como acessório](question)
     - [Tem em estoque](question)
+    - [Roda o facecapture](question)

@@ -33,7 +33,7 @@ def get_title_product_price(response):
     return title, product, price
 
 def get_product_urls():
-    df = pd.read_csv("urls.csv")
+    df = pd.read_csv("data/urls.csv")
     return list(df["product"])
         
 class Smartphones(scrapy.Spider):
@@ -50,14 +50,16 @@ class Smartphones(scrapy.Spider):
         additional_info = get_data_from_table(response, 
                                               '//*[@id="productDetails_detailBullets_sections1"]/tr/th/text()',
                                               '//*[@id="productDetails_detailBullets_sections1"]/tr/td/text()')
-         
-        yield {
-            'title': title,
-            'product': product,
-            'price': price,
-            'product_info': product_info,
-            'additional_info': additional_info,
-        }
+        
+        if(additional_info.get('ASIN', None) != None):
+            yield {
+                'title': title,
+                'product': product,
+                'price': price,
+                'product_info': product_info,
+                'additional_info': additional_info,
+                'url': response.urljoin(response.url)
+            }
     
 
         

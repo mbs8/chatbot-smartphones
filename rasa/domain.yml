@@ -14,7 +14,6 @@ intents:
   - affirm
   - deny
   - ask_help
-  - get_product_list
   - bot_challenge
 entities:
   - fact
@@ -49,8 +48,6 @@ responses:
       title: Dúvidas sobre um produto
     - payload: Consulta de preço
       title: Consultar preço
-    - payload: Produtos?
-      title: Listar produtos
     button_type: vertical
     text: Olá, sou o Celito, como posso te ajudar hoje?
   utter_goodbye:
@@ -92,7 +89,6 @@ responses:
   - text: Não encontrou sua dúvida na lista? Tudo bem! Me fala, o que deseja saber sobre o produto?
 actions:
   - action_check_stock
-  - action_list_products
   - action_product_fact
   - action_product_price
   - action_product_qa

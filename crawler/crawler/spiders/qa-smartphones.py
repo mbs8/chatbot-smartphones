@@ -5,7 +5,7 @@ import pandas as pd
 
 def get_qa_urls():
     print(sys.path)
-    df = pd.read_csv("urls.csv")
+    df = pd.read_csv("data/urls.csv")
     return list(df["qa"])
 
 class QaSmartphones(scrapy.Spider):

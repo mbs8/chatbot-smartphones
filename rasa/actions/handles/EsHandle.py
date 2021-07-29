@@ -28,10 +28,6 @@ class EsHandle:
         for p in query:
             possible_products.append(p['_source'])
 
-        # insert URL into Dict
-        for prod in possible_products:
-            prod.update({"URL": f"www.amazon.com.br/gp/product/{prod['additional_info']['ASIN']}"})
-
         return possible_products
 
     def get_qa_by_asin(self, asin, question):
@@ -81,10 +77,10 @@ class EsHandle:
 
         for product in products_jsons:
             title = product.get("product", "TITLE")
-            url = product.get("URL", "no page")
+            url = product.get("url", "no page")
             fact_json = product["product_info"]
-            value = fact_json.get(product_fact, "FACT")
-            possible_products.append({"Produto": title, product_fact: value, "URL": url})
+            value = fact_json.get(product_fact, "Informação não encontrada")
+            possible_products.append({"Produto": title, product_fact: value, "url": url})
         
         return possible_products
 
@@ -97,9 +93,10 @@ class EsHandle:
         title = product["product"]
         add_info_json = product["additional_info"]
         asin = add_info_json["ASIN"]
+        url = product.get("url", "no page")
         
         qa_list = self.get_qa_by_asin(asin, question)
-        return {"Produto": title, "qa": qa_list, "URL": product["URL"]}
+        return {"Produto": title, "qa": qa_list, "url": url}
 
     def get_product_price(self, product_name):
         products_jsons = self.get_product_by_name(product_name)
@@ -108,8 +105,8 @@ class EsHandle:
         for product in products_jsons:
             title = product.get("product", "TITLE")
             price = product.get("price", "PRICE")
-            url = product.get("URL", "no page")
-            possible_products.append({"Produto": title, "price": price, "URL": url})
+            url = product.get("url", "no page")
+            possible_products.append({"Produto": title, "price": price, "url": url})
         
         return possible_products
 

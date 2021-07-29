@@ -133,3 +133,6 @@ dmypy.json
 
 # models
 rasa/models
+
+# backup folder
+backup
