@@ -26,13 +26,12 @@ class ActionGetProductFact(Action):
             fact = tracker.get_slot("fact")
             possible_products = es_handle.get_product_fact(product_name, fact)
             text_to_user = []
-            attachments = []
             if(possible_products == []):
                 text_to_user = "Infelizmente não possuímos esse produto em estoque."
             else:
                 # just top 3 products
                 if(len(possible_products) > 3):
-                    possible_products = possible_products[:2]
+                    possible_products = possible_products[:3]
 
                 # format output to user
                 for prod in possible_products:
@@ -41,12 +40,10 @@ class ActionGetProductFact(Action):
                         msg.append(f"{key}: {prod[key]}")
                     msg = " - ".join(msg)
                     text_to_user.append(msg)
-                    attachments.append(prod["url"])
 
                 text_to_user = "\n".join(text_to_user)
-                attachments = "\n".join(attachments)
 
-            dispatcher.utter_message(response="utter_list_products", text=text_to_user, attachment=attachments)
+            dispatcher.utter_message(response="utter_list_products", text=text_to_user)
             slots_to_reset = ["product", "fact"]
             return [SlotSet(slot) for slot in slots_to_reset]
 
@@ -67,7 +64,7 @@ class ActionGetProductPrice(Action):
             else:
                 # just top 3 products
                 if(len(possible_products) > 3):
-                    possible_products = possible_products[:2]
+                    possible_products = possible_products[:3]
                 msg = [" - ".join(prod.values()) for prod in possible_products]
                 msg = "\n".join(msg)
             
