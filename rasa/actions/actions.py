@@ -89,7 +89,7 @@ class ActionCheckStock(Action):
             else:
                 # just top 3 products
                 if(len(possible_products) > 3):
-                    possible_products = possible_products[:2]
+                    possible_products = possible_products[:3]
                 prods = [" - ".join(prod.values()) for prod in possible_products]
                 prods = "\n".join(prods)
                 msg = f"Nós temos esse(s) produto(s) em estoque:\n{prods}\nAcesse o link para mais detalhes!"
