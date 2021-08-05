@@ -127,7 +127,7 @@ class ActionGetProductQA(Action):
                 text_to_user.append('\n')
 
             if(answer != []):
-                text_to_user.append(f"Cheque a página do produto para mais detalhes: {answer.get('URL')}")
+                text_to_user.append(f"Cheque a página do produto para mais detalhes: {answer.get('url')}")
 
             text_to_user = "\n".join(text_to_user)
             dispatcher.utter_message(response="utter_list_products", text=text_to_user)
