@@ -115,6 +115,7 @@ nlu:
     - [Nokia Brasil](product)
     - [Android](product)
     - [iOS](product)
+    - [ASUS](product)
 - intent: inform_fact
   examples: |
     - [RAM](fact)
