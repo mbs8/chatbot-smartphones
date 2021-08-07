@@ -1,4 +1,4 @@
-cd /Users/matheus/Git/chatbot-smartphones/logs
+cd logs
 
 elasticsearch_pid=`cat elasticsearch.pid`
 rasa_server_pid=`cat rasa-server.pid`
