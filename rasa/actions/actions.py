@@ -13,6 +13,17 @@ import json
 
 from actions.handles.EsHandle import es_handle
 
+class ActionResetSlots(Action):
+    def name(self) -> Text:
+        return "action_reset_slots"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+            slots_to_reset = ["product", "fact", "question"]
+            return [SlotSet(slot, None) for slot in slots_to_reset]
+
 class ActionGetProductFact(Action):
 
     def name(self) -> Text:
@@ -44,8 +55,8 @@ class ActionGetProductFact(Action):
                 text_to_user = "\n".join(text_to_user)
 
             dispatcher.utter_message(response="utter_list_products", text=text_to_user)
-            slots_to_reset = ["product", "fact"]
-            return [SlotSet(slot) for slot in slots_to_reset]
+            slots_to_reset = ["fact"]
+            return [SlotSet(slot, None) for slot in slots_to_reset]
 
 class ActionGetProductPrice(Action):
 
@@ -69,8 +80,7 @@ class ActionGetProductPrice(Action):
                 msg = "\n".join(msg)
             
             dispatcher.utter_message(response="utter_list_products", text=msg)
-            slots_to_reset = ["product"]
-            return [SlotSet(slot) for slot in slots_to_reset]
+            return []
 
 class ActionCheckStock(Action):
 
@@ -95,8 +105,7 @@ class ActionCheckStock(Action):
                 msg = f"Nós temos esse(s) produto(s) em estoque:\n{prods}\nAcesse o link para mais detalhes!"
             
             dispatcher.utter_message(response="utter_list_products", text=msg)
-            slots_to_reset = ["product"]
-            return [SlotSet(slot) for slot in slots_to_reset]
+            return []
 
 class ActionGetProductQA(Action):
 
@@ -131,5 +140,5 @@ class ActionGetProductQA(Action):
 
             text_to_user = "\n".join(text_to_user)
             dispatcher.utter_message(response="utter_list_products", text=text_to_user)
-            slots_to_reset = ["product", "question", "fact"]
-            return [SlotSet(slot) for slot in slots_to_reset]
+            slots_to_reset = ["question", "fact"]
+            return [SlotSet(slot, None) for slot in slots_to_reset]

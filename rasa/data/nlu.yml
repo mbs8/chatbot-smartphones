@@ -42,10 +42,19 @@ nlu:
     - isso
     - perfeito
     - ótimo
+    - quero
+    - sim, por favor
 - intent: deny
   examples: |
     - não
     - n
+    - nem
+    - chega
+    - nao
+    - de jeito nenhum
+    - isso é tudo
+    - nao isso é tudo
+    - não obrigado
     - nunca
     - acho que não
     - não gostei
@@ -54,6 +63,8 @@ nlu:
     - isso tá errado
     - NÃO
     - claro que não
+    - não quero
+    - não é bem isso
 - intent: ask_help
   examples: |
     - preciso de ajuda
@@ -62,6 +73,38 @@ nlu:
     - ajuda
     - me ajuda
     - ajude-me
+    - tenho uma dúvida
+    - quero saber sobre outro smartphone
+    - tenho um duvida para outro produto
+    - quero outro produto
+- intent: out_of_scope
+  examples: |
+    - não entendi
+    - hmmmm
+    - quero comprar um carro
+    - 2 + 2
+    - como está o clima
+    - quantos anos você tem
+    - qual o sentido da vida
+    - quero consertar
+    - quero uma pizza
+    - quem é seu criador
+    - vocês tem um liquidificador
+    - que dia é hoje
+    - data de hoje
+    - me diz qual a data
+    - qual o tempo de hoje
+    - qual o tempo
+    - qual o melhor dia para comprar
+    - bla bla bla
+    - carro
+    - computador
+    - navio
+    - mar
+    - barco
+    - casa
+    - endereco
+    - rua
 - intent: bot_challenge
   examples: |
     - você é um bot
@@ -73,17 +116,22 @@ nlu:
     - Duvidas sobre um produto
     - tenho duvidas sobre um produto
     - gostaria de saber mais sobre um celular
+    - quero saber mais sobre este produto
+    - saber mais
 - intent: check_stock
   examples: |
     - verificar estoque
-    - Vocês tem iphone em estoque
+    - Vocês tem [iphone](product) em estoque
 - intent: get_price
   examples: |
     - Consulta de preço
     - diga-me o preço de um produto
     - quanto custa um celular
-    - quanto custa o smartphone
-    - qual o valor do iPhone
+    - quanto custa um smartphone
+    - qual o valor do
+    - quero comprar um celular
+    - quero comprar um smartphone
+    - qual o preço dele
 - intent: inform_product
   examples: |
     - [iphone](product)

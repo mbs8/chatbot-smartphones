@@ -11,3 +11,19 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: out of scope
+  steps:
+  - or:
+    - intent: nlu_fallback
+    - intent: out_of_scope
+  - action: utter_default
+  - action: action_reset_slots
+  - action: utter_menu
+
+- rule: User deny bot action
+  steps:
+  - intent: deny
+  - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
