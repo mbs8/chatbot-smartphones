@@ -310,3 +310,8 @@ stories:
   - action: utter_more_info
   - intent: affirm
   - action: utter_menu
+
+- story: User challenges bot
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
