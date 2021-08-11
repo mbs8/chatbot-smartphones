@@ -137,9 +137,6 @@ rasa/models
 # backup folder
 backup
 
-# removes credentials file from git
-rasa/credentials.yml
-
 # training results and datasets
 rasa/train_test_split
 rasa/results
