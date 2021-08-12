@@ -28,6 +28,7 @@ nlu:
     - obrigado
     - até logo
     - so isso
+    - valeu
 - intent: affirm
   examples: |
     - sim
@@ -44,6 +45,7 @@ nlu:
     - ótimo
     - quero
     - sim, por favor
+    - gostaria
 - intent: deny
   examples: |
     - não
@@ -94,6 +96,7 @@ nlu:
     - data de hoje
     - me diz qual a data
     - qual o tempo de hoje
+    - qual o clima em
     - qual o tempo
     - qual o melhor dia para comprar
     - bla bla bla
@@ -118,6 +121,7 @@ nlu:
     - gostaria de saber mais sobre um celular
     - quero saber mais sobre este produto
     - saber mais
+    - quero mais informações sobre um celular
 - intent: check_stock
   examples: |
     - verificar estoque
@@ -132,6 +136,7 @@ nlu:
     - quero comprar um celular
     - quero comprar um smartphone
     - qual o preço dele
+    - quero saber o preço de um celular
 - intent: inform_product
   examples: |
     - [iphone](product)
@@ -139,6 +144,8 @@ nlu:
     - [celular Xiaomi](product)
     - [iphone X](product)
     - [Samsung A12](product)
+    - [Samsung Galaxy S9](product)
+    - [Samsung Galaxy S20](product)
     - [Xiaomi](product)
     - [Celular](product)
     - [Smartphone](product)
@@ -148,6 +155,7 @@ nlu:
     - [iphone 8](product)
     - [Xiaomi Poc](product)
     - [Nokia](product)
+    - [Nokia lanterninha](product)
     - [apple](product)
     - [motorola](product)
     - [moto G](product)
@@ -164,6 +172,16 @@ nlu:
     - [Android](product)
     - [iOS](product)
     - [ASUS](product)
+    - [Xiaomi redmi note](product)
+    - [Google pixel](product)
+    - [Pixel](product)
+    - [Google](product)
+    - [Realme](product)
+    - [Positivo](product)
+    - [Mi 10](product)
+    - [Mi 9](product)
+    - [Mi 10T](product)
+    - [TCL L5](product)
 - intent: inform_fact
   examples: |
     - [RAM](fact)

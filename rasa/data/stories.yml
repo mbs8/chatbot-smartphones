@@ -21,7 +21,7 @@ stories:
   - intent: affirm
   - action: utter_menu
 
-- story: User wants to check if a smartphone is in stock
+- story: User wants to check if a smartphone is in stock - product setted
   steps:
   - intent: check_stock
   - slot_was_set:
