@@ -67,6 +67,7 @@ nlu:
     - claro que não
     - não quero
     - não é bem isso
+    - desisto
 - intent: ask_help
   examples: |
     - preciso de ajuda

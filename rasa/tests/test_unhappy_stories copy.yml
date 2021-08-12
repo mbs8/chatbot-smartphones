@@ -1,0 +1,90 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+stories:
+# Unhappy paths
+
+- story: Greet and ask about the weather
+  steps:
+  - user: |
+      olá
+    intent: greet
+  - action: utter_greet
+  - user: |
+      você pode me ajudar?
+    intent: ask_help
+  - action: utter_help
+  - user: |
+      qual o clima em Recife?
+    intent: out_of_scope
+  - action: utter_default
+
+- story: User wants to check about a product out of scope
+  steps:
+  - user: |
+      boa noite
+    intent: greet
+  - action: utter_greet
+  - user: |
+      verificar estoque
+    intent: check_stock
+  - action: utter_ask_product
+  - user: |
+      Carro
+    intent: out_of_scope
+  - action: utter_default
+  - action: action_reset_slots
+  - action: utter_menu
+
+- story: User wants buy a car
+  steps:
+  - user: |
+      boa noite
+    intent: greet
+  - action: utter_greet
+  - user: |
+      quero comprar um carro
+    intent: out_of_scope
+  - action: utter_default
+  - action: action_reset_slots
+  - action: utter_menu
+
+- story: User wants to know incompatible factual information
+  steps:
+  - user: |
+      Tenho uma dúvida
+    intent: get_product_fact
+  - action: utter_ask_product
+  - user: |
+      [Nokia]{"entity": "product"}
+    intent: inform_product
+  - action: utter_ask_fact
+  - user: |
+      [vem com teclado?]{"entity": "fact"}
+    intent: inform_fact
+  - slot_was_set:
+    - product: "Outra"
+  - action: utter_ask_qa
+  - user: |
+      [vem com teclado?]{"entity": "question"}
+    intent: get_product_qa
+  - action: action_product_qa
+  - action: utter_more_info
+  - user: |
+      nao
+    intent: deny
+  - action: action_reset_slots
+  
+- story: Greet and ask about the weather
+  steps:
+  - user: |
+      quero comprar um smartphone
+    intent: greet
+  - action: utter_greet
+  - user: |
+      você pode me ajudar?
+    intent: ask_help
+  - action: utter_help
+  - user: |
+      qual o clima em Recife?
+    intent: out_of_scope
+  - action: utter_default
