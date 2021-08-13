@@ -1,1 +1,1 @@
-./ngrok http 5005
+ssh -R 80:localhost:5005 localhost.run
