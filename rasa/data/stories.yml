@@ -153,7 +153,7 @@ stories:
   - intent: affirm
   - action: utter_menu 
 
-- story: User asks directly a fact of a product
+- story: User asks directly a QA of a product
   steps:
   - intent: get_product_qa
   - slot_was_set:
