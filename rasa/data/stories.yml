@@ -153,6 +153,18 @@ stories:
   - intent: affirm
   - action: utter_menu 
 
+- story: User asks directly a fact of a product
+  steps:
+  - intent: get_product_qa
+  - slot_was_set:
+    - product: produto
+  - slot_was_set:
+    - question: question
+  - action: action_product_qa
+  - action: utter_more_info
+  - intent: affirm
+  - action: utter_menu 
+
 - story: User challenges bot
   steps:
   - intent: bot_challenge
