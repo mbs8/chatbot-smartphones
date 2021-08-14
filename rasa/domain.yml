@@ -100,7 +100,14 @@ responses:
   utter_ask_qa:
   - text: Não encontrou sua dúvida na lista? Tudo bem! Me fala, o que deseja saber sobre o produto?
   utter_more_info:
-  - text: Deseja saber algo mais sobre o produto?
+  - buttons:
+    - payload: sim
+      title: Sim
+    - payload: não
+      title: Não
+    button_type: vertical
+    text: Deseja saber algo mais sobre o produto?
+
 actions:
   - action_is_fact
   - action_reset_slots
