@@ -12,6 +12,7 @@ from rasa_sdk.events import SlotSet
 import json
 
 from actions.handles.EsHandle import es_handle
+
 FACT_LIST = [
     "Sistema operacional",
     "RAM",
@@ -22,6 +23,8 @@ FACT_LIST = [
     "Marca",
     "Dimensões do produto"
 ]
+
+TOP_N = 3
 
 class ActionResetSlots(Action):
     def name(self) -> Text:
@@ -80,9 +83,9 @@ class ActionGetProductFact(Action):
             if(possible_products == []):
                 text_to_user = "Infelizmente não possuímos esse produto em estoque."
             else:
-                # just top 3 products
-                if(len(possible_products) > 3):
-                    possible_products = possible_products[:3]
+                # just top_n products
+                if(len(possible_products) > TOP_N):
+                    possible_products = possible_products[:TOP_N]
 
                 # format output to user
                 for prod in possible_products:
@@ -113,9 +116,9 @@ class ActionGetProductPrice(Action):
             if(possible_products == []):
                 msg = "Infelizmente não possuímos esse produto em estoque."
             else:
-                # just top 3 products
-                if(len(possible_products) > 3):
-                    possible_products = possible_products[:3]
+                # just top_n products
+                if(len(possible_products) > TOP_N):
+                    possible_products = possible_products[:TOP_N]
                 msg = [" - ".join(prod.values()) for prod in possible_products]
                 msg = "\n".join(msg)
             
@@ -137,9 +140,9 @@ class ActionCheckStock(Action):
             if(possible_products == []):
                 msg = "Infelizmente não possuímos esse produto em estoque."
             else:
-                # just top 3 products
-                if(len(possible_products) > 3):
-                    possible_products = possible_products[:3]
+                # just top_n products
+                if(len(possible_products) > TOP_N):
+                    possible_products = possible_products[:TOP_N]
                 prods = [" - ".join(prod.values()) for prod in possible_products]
                 prods = "\n".join(prods)
                 msg = f"Nós temos esse(s) produto(s) em estoque:\n{prods}\nAcesse o link para mais detalhes!"
