@@ -11,7 +11,8 @@ intents:
   - check_stock
   - out_of_scope
   - nlu_fallback
-  - inform_fact
+  - inform_doubt
+  - product_doubt
   - goodbye
   - affirm
   - deny
@@ -29,17 +30,13 @@ slots:
     type: text
     influence_conversation: false
   fact:
-    type: categorical
-    values:
-      - Memória RAM
-      - Sistema Operacional
-      - Capacidade de armazenamento
-      - Tamanho de tela vertical
-      - Cor
-      - Peso do produto
-      - Dimensões do produto
-      - Marca
-      - Outra
+    type: text
+    influence_conversation: true
+  is_fact:
+    type: bool
+    influence_conversation: true
+  prod_context:
+    type: bool
     influence_conversation: true
 responses:
   utter_greet:
@@ -78,7 +75,7 @@ responses:
   utter_ask_product:
   - text: Claro! Qual a marca e modelo do smartphone?
   - text: Posso te ajudar. Me informa a marca e modelo do smartphone
-  utter_ask_fact:
+  utter_ask_doubt:
   - buttons:
     - payload: Sistema operacional
       title: Sistema operacional
@@ -105,8 +102,10 @@ responses:
   utter_more_info:
   - text: Deseja saber algo mais sobre o produto?
 actions:
+  - action_is_fact
   - action_reset_slots
   - action_check_stock
   - action_product_fact
   - action_product_price
   - action_product_qa
+  - action_check_product

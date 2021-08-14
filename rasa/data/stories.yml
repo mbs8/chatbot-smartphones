@@ -14,6 +14,9 @@ stories:
 - story: User wants to check if a smartphone is in stock
   steps:
   - intent: check_stock
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
   - action: utter_ask_product
   - intent: inform_product
   - action: action_check_stock
@@ -24,268 +27,91 @@ stories:
 - story: User wants to check if a smartphone is in stock - product setted
   steps:
   - intent: check_stock
+  - action: action_check_product
   - slot_was_set:
-    - product: produto
+    - prod_context: true
   - action: action_check_stock
   - action: utter_more_info
   - intent: affirm
   - action: utter_menu
 
-- story: User wants to know factual information (RAM)
+- story: User wants to know factual information
   steps:
-  - intent: get_product_fact
+  - intent: product_doubt
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
   - action: utter_ask_product
   - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
+  - action: utter_ask_doubt
+  - intent: inform_doubt
   - slot_was_set:
-    - fact: RAM
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: true
   - action: action_product_fact
   - action: utter_more_info
   - intent: affirm
   - action: utter_menu
 
-- story: User wants to know factual information (RAM) - product settet
+- story: User wants to know factual information - product setted
   steps:
-  - intent: get_product_fact
+  - intent: product_doubt
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: true
+  - action: utter_ask_doubt
+  - intent: inform_doubt
+  - slot_was_set:
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: true
+  - action: action_product_fact
+  - action: utter_more_info
+  - intent: affirm
+  - action: utter_menu
+
+- story: User wants to know QA information
+  steps:
+  - intent: product_doubt
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
+  - action: utter_ask_product
+  - intent: inform_product
   - slot_was_set:
     - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
+  - action: utter_ask_doubt
+  - intent: inform_doubt
   - slot_was_set:
-    - fact: RAM
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (OS)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
+    - fact: fact
+  - action: action_is_fact
   - slot_was_set:
-    - fact: Sistema Operacional
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (OS) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Sistema Operacional
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (storage)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Capacidade de armazenamento digital
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (storage) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Capacidade de armazenamento digital
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Screen)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Tamanho de tela vertical 
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Screen) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Tamanho de tela vertical 
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Color)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Cor
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Color) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Cor
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (weight)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Peso do produto
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (weight) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Peso do produto
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Dimensions)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Dimensões do produto
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Dimensions) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Dimensões do produto
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Brand)
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Marca
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Brand) - product setted
-  steps:
-  - intent: get_product_fact
-  - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Marca
-  - action: action_product_fact
-  - action: utter_more_info
-  - intent: affirm
-  - action: utter_menu
-
-- story: User wants to know specifications of a product that isn't a factual information
-  steps:
-  - intent: get_product_fact
-  - action: utter_ask_product
-  - intent: inform_product
-  - action: utter_ask_fact
-  - intent: inform_fact
-  - slot_was_set:
-    - fact: Outra
+    - is_fact: false
   - action: utter_ask_qa
   - intent: get_product_qa
-  - slot_was_set:
-    - fact: Outra
   - action: action_product_qa
   - action: utter_more_info
   - intent: affirm
   - action: utter_menu
 
-- story: User wants to know specifications of a product that isn't a factual information - product setted
+- story: User wants to QA information - product setted
   steps:
-  - intent: get_product_fact
+  - intent: product_doubt
+  - action: action_check_product
   - slot_was_set:
-    - product: produto
-  - action: utter_ask_fact
-  - intent: inform_fact
+    - prod_context: true
+  - action: utter_ask_doubt
+  - intent: inform_doubt
   - slot_was_set:
-    - fact: Outra
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: false
   - action: utter_ask_qa
   - intent: get_product_qa
-  - slot_was_set:
-    - fact: Outra
   - action: action_product_qa
   - action: utter_more_info
   - intent: affirm
@@ -294,6 +120,9 @@ stories:
 - story: User requiring the price of a product
   steps:
   - intent: get_price
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
   - action: utter_ask_product
   - intent: inform_product
   - action: action_product_price
@@ -304,12 +133,25 @@ stories:
 - story: User requiring the price of a product - product setted
   steps:
   - intent: get_price
+  - action: action_check_product
   - slot_was_set:
-    - product: produto
+    - prod_context: true
   - action: action_product_price
   - action: utter_more_info
   - intent: affirm
   - action: utter_menu
+
+- story: User asks directly a fact of a product
+  steps:
+  - intent: get_product_fact
+  - slot_was_set:
+    - product: produto
+  - slot_was_set:
+    - fact: fact
+  - action: action_product_fact
+  - action: utter_more_info
+  - intent: affirm
+  - action: utter_menu 
 
 - story: User challenges bot
   steps:

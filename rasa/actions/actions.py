@@ -12,6 +12,16 @@ from rasa_sdk.events import SlotSet
 import json
 
 from actions.handles.EsHandle import es_handle
+FACT_LIST = [
+    "Sistema operacional",
+    "RAM",
+    "Tamanho de tela",
+    "Capacidade de armazenamento",
+    "Cor",
+    "Peso do produto",
+    "Marca",
+    "Dimensões do produto"
+]
 
 class ActionResetSlots(Action):
     def name(self) -> Text:
@@ -21,8 +31,37 @@ class ActionResetSlots(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-            slots_to_reset = ["product", "fact", "question"]
+            slots_to_reset = ["product", "fact", "question", "is_fact", "prod_context"]
             return [SlotSet(slot, None) for slot in slots_to_reset]
+
+class ActionCheckProduct(Action):
+    def name(self) -> Text:
+        return "action_check_product"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+            prod = tracker.get_slot("product")
+            if(prod != None):
+                return [SlotSet("prod_context", True)]
+            else:
+                return [SlotSet("prod_context", None)]
+
+
+class ActionIsFact(Action):
+    def name(self) -> Text:
+        return "action_is_fact"
+    
+    async def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+            info = tracker.get_slot("fact")
+            if(info in FACT_LIST):
+                return [SlotSet("is_fact", True)]
+            else:
+                return [SlotSet("is_fact", False)]            
 
 class ActionGetProductFact(Action):
 
@@ -36,6 +75,7 @@ class ActionGetProductFact(Action):
             product_name = tracker.get_slot("product")
             fact = tracker.get_slot("fact")
             possible_products = es_handle.get_product_fact(product_name, fact)
+
             text_to_user = []
             if(possible_products == []):
                 text_to_user = "Infelizmente não possuímos esse produto em estoque."
@@ -127,10 +167,9 @@ class ActionGetProductQA(Action):
                 text_to_user.append("Infelizmente não consegui encontrar resposta para sua pergunta")
             else:
                 # format output to user
-                msg = [f"Veja o que encontrei sobre o produto {answer['Produto']}:"]
+                msg = [f"Veja o que encontrei sobre o {answer['Produto']}:"]
                 qa = answer["qa"][0]
-                msg.append(f"Pergunta: {qa['question']}")
-                msg.append(f"Resposta: {qa['answer']}")
+                msg.append(f"{qa['answer']}")
                 msg = "\n".join(msg)
                 text_to_user.append(msg)
                 text_to_user.append('\n')

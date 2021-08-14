@@ -1,5 +1,67 @@
 version: "2.0"
 nlu:
+- synonym: RAM
+  examples: |
+    - memoria RAM
+    - Memória RAM
+    - ram
+    - memo ram
+    - memoria
+    - memória
+    - capacidade da RAM
+
+- synonym: Sistema Operacional
+  examples: |
+    - SO
+    - OS
+    - sistema op
+    - sistema operacional
+
+- synonym: Capacidade de armazenamento
+  examples: |
+    - capacidade de armazenamento
+    - armazenamento
+    - capacidade de dados
+    - capacidade de memoria
+    - quantos GB
+
+- synonym: Tamanho de tela vertical
+  examples: |
+    - tamanho da tela
+    - tela
+    - comprimento da tela
+    - tamanho de tela
+
+- synonym: Cor
+  examples: |
+    - coloração
+    - coloracao
+    - coloraçao
+    - cores
+
+- synonym: Peso do produto
+  examples: |
+    - peso
+    - massa
+    - pesa
+
+- synonym: Dimensões do produto
+  examples: |
+    - dimensoes
+    - Dimensões
+    - Dimensoes
+    - dimensões
+    - tamanho do produto
+    - tamanho
+    - medidas
+    - mede
+    - medida
+
+- synonym: Marca
+  examples: |
+    - marca
+    - fabricante
+
 - intent: greet
   examples: |
     - oi
@@ -68,6 +130,14 @@ nlu:
     - não quero
     - não é bem isso
     - desisto
+- intent: product_doubt
+  examples: |
+    - Duvidas sobre um produto
+    - tenho duvidas sobre um produto
+    - gostaria de saber mais sobre um celular
+    - quero saber mais sobre este produto
+    - saber mais
+    - quero mais informações sobre um celular
 - intent: ask_help
   examples: |
     - preciso de ajuda
@@ -117,12 +187,55 @@ nlu:
     - estou falando com um humano
 - intent: get_product_fact
   examples: |
-    - Duvidas sobre um produto
-    - tenho duvidas sobre um produto
-    - gostaria de saber mais sobre um celular
-    - quero saber mais sobre este produto
-    - saber mais
-    - quero mais informações sobre um celular
+    - quanto de [RAM](fact) tem o [iPhone](product)
+    - quanto de [RAM](fact) tem o [Xiaomi T9](product)
+    - quanto de [RAM](fact) tem o [Google Pixel](product)
+    - qual a [memoria RAM](fact) do [Nokia](product)
+    - quanto de [ram](fact) tem [Oneplux](product)
+    - qual a quantidade de [memo ram](fact) que o [Samsung Galaxy](product) possui
+    - [capacidade da RAM](fact) do [Motorola](product)
+    - [memoria](fact) do [LG K10](product)
+    - me diz a quantidade de [memória](fact) do [Mi 11](product)
+    - qual o [sistema operacional](fact) do [Samsung Galaxy](product)
+    - me diz o [SO](fact) do [iPhone 12](product)
+    - [Xiaomi T10](product) [OS](fact)
+    - quero saber o [OS](fact) do [Oneplus](product)
+    - qual o [sistema op](fact) do [Redmi note](product)
+    - [quantos GB](fact) possui o [iPhone 11](product)
+    - [quantos GB](fact) possui o [Samsung S20](product)
+    - qual a [capacidade de armazenamento](fact) do [iPhone 11](product)
+    - qual a [capacidade de dados](fact) do [Xiaomi T10](product)
+    - [capacidade de memoria](fact) do [Nokia](product)
+    - [quantos GB](fact) possui o [iPhone 11](product)
+    - qual o [armazenamento](fact) do smartphone [Oneplus](product)
+    - quantas polegadas tem a [tela](fact) do [samsung A20](product)
+    - quero saber o [tamanho de tela](fact) do [iphone 8](product)
+    - qual o [tamanho da tela](fact) do [Xiami Poco](product)
+    - quanto mede a [tela](fact) do [Moto G10 plus](product)
+    - [tamanho de tela](fact) do [Realme 7](product)
+    - qual a [coloração](fact) do [iPhone X](product)
+    - quais [cores](fact) o smartphone da [Xiaomi](product) possui
+    - [coloracao](fact) do [Mi 9](product)
+    - qual a [cor](fact) disponível do [Samsung Galaxy S20](product)
+    - me informe a [coloraçao](fact) do [ASUS zenphone](product)
+    - qual o [peso](fact) do [iphone 8](product)
+    - me diga o [Peso do produto](fact) [Oneplus](product)
+    - quanto [pesa](fact) um [LG K10](product)
+    - qual a [massa](fact) média do [Oppo](product)
+    - quais as [dimensoes](fact) do [iPhone X](product) 
+    - Me diz as [Dimensões](fact) de um [Xiaomi Poco](product) 
+    - [Dimensoes](fact) do [Redmi](product) 
+    - me informa as [dimensões](fact) [Positivo](product) 
+    - qual o [tamanho do produto](fact) do [Samsung A12](product) 
+    - qual o [tamanho](fact) de um [Huawei P40](product)
+    - me diz as [medidas](fact) do [ASUS zenphone](product)
+    - quanto [mede](fact) [LG K40](product)
+    - qual a [medida](fact) de tamanho do [Redmi](product)
+    - qual a [Marca](fact) do [zenphone](product)
+    - qual o [fabricante](fact) do [iPhone 11](product)
+    - qual a [marca](fact) do [Galaxy](product)
+    - qual a [marca](fact) do [Pixel](product)
+    - qual a [marca](fact) do [T10](product)
 - intent: check_stock
   examples: |
     - verificar estoque
@@ -183,10 +296,12 @@ nlu:
     - [Mi 9](product)
     - [Mi 10T](product)
     - [TCL L5](product)
-- intent: inform_fact
+    - [Huawei](product)
+    - [Huawei P40](product)
+- intent: inform_doubt
   examples: |
     - [RAM](fact)
-    - [Sistema Operacional](fact)
+    - [Sistema operacional](fact)
     - [Capacidade de armazenamento digital](fact)
     - [Tamanho de tela vertical](fact)
     - [Cor](fact)
