@@ -6,445 +6,354 @@ stories:
   steps:
   - user: |
       bom dia
-    intent: greet
-  - action: utter_greet
-
-- story: Greet and ask about RAM of iPhone
-  steps:
-  - user: |
+      boa tarde
+      boa noite
       olá
+      tudo bem
     intent: greet
   - action: utter_greet
+
+- story: User ask for help
+  steps:
   - user: |
+      preciso de ajuda
       você pode me ajudar?
+      me ajuda ae
     intent: ask_help
-  - action: utter_help
-  - user: |
-      quanto de [RAM]{"entity": "fact"} tem o [iPhone]{"entity": "product"}?
-    intent: ask_product_fact 
-  - action: utter_ask_product_fact
+  - action: utter_greet
 
-- story: User wants to check if product is available
+- story: User challenges bot
   steps:
   - user: |
-      boa noite
-    intent: greet
-  - action: utter_greet
+      você é um bot?
+      estou falando com um humano?
+      você não é um bot
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: User wants to check if a smartphone is in stock
+  steps:
   - user: |
       verificar estoque
+      quais produtos tem em estoque
     intent: check_stock
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
   - action: utter_ask_product
   - user: |
+      [iPhone X]{"entity": "product"}
       [Samsung Galaxy S9]{"entity": "product"}
+      [Xiaomi Poco]{"entity": "product"}
     intent: inform_product
   - action: action_check_stock
   - action: utter_more_info
   - user: |
-      sim, por favor
+      sim
+      claro
     intent: affirm
   - action: utter_menu
 
-- story: User wants to check if product is available - product setted
+- story: User wants to check if a smartphone is in stock - product setted
   steps:
   - user: |
-      boa noite
-    intent: greet
-  - action: utter_greet
-  - user: |
-      verificar estoque
+      verificar stoque
+      stoque de produtos
+      produtos disponíveis
     intent: check_stock
+  - action: action_check_product
   - slot_was_set:
-    - product: "iPhone X"
+    - prod_context: true
   - action: action_check_stock
-  - action: utter_more_info
-  - user: |
-      sim, por favor
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (RAM)
-  steps:
-  - user: |
-      Dúvidas sobre um produto
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [Nokia]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [RAM]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (RAM) - product setted
-  steps:
-  - user: |
-      Dúvidas sobre um produto
-    intent: get_product_fact
-  - slot_was_set:
-    - product: "Samsung Galaxy S9"
-  - action: utter_ask_fact
-  - user: |
-      [RAM]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (OS)
-  steps:
-  - user: |
-      Dúvidas sobre um produto
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [LG K10]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Sistema operacional]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
   - action: utter_more_info
   - user: |
       nao
+      desisto
+      de jeito nenhum
     intent: deny
   - action: action_reset_slots
 
-- story: User wants to know factual information (OS) - product setted
+- story: User wants to know factual information
   steps:
   - user: |
-      Dúvidas sobre um produto
-    intent: get_product_fact
+      tenho uma duvida
+      queria saber mais sobre um produto
+      gostaria de informações sobre um produto
+    intent: product_doubt
+  - action: action_check_product
   - slot_was_set:
-    - product: "Moto G9"
-  - action: utter_ask_fact
-  - user: |
-      [Sistema operacional]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (storage)
-  steps:
-  - user: |
-      Duvidas sobre um produto
-    intent: get_product_fact
+    - prod_context: null
   - action: utter_ask_product
   - user: |
-      [iPhone 7]{"entity": "product"}
+      [OPPO]{"entity":"product"}
+      [ASUS zenphone]{"entity":"product"}
+      [Xiomi]{"entity":"product"}
     intent: inform_product
-  - action: utter_ask_fact
+  - action: utter_ask_doubt
   - user: |
-      [Capacidade de armazenamento]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (storage) - product setted
-  steps:
-  - user: |
-      Gostaria de saber mais sobre um celular
-    intent: get_product_fact
+      tem quanto de [RAM]{"entity":"fact"}?
+      qual a capacidade [armazenamento]{"entity":"fact"}?
+      qual o [tamanho da tela]{"entity":"fact"}?
+      [quantos GB]{"entity":"fact"} de armazenamento?
+      [dimensões]{"entity":"fact"} do aparelho
+      qual o [sistema operacional]{"entity":"fact"}?
+      qual o [peso]{"entity":"fact"} do celular?
+      quanto [pesa]{"entity":"fact"}?
+      quais as [cores]{"entity":"fact"} disponíveis?
+      tem na [cor azul]{"entity":"fact"}?
+      tem [vermelho]{"entity":"fact"}?
+    intent: inform_doubt
   - slot_was_set:
-    - product: "Xiaomi redmi note"
-  - action: utter_ask_fact
-  - user: |
-      [Capacidade de armazenamento]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      não, obrigado
-    intent: deny
-  - action: action_reset_slots
-
-- story: User wants to know factual information (Screen)
-  steps:
-  - user: |
-      saber mais
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [Google pixel]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Tamanho de tela vertical]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      calro que sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Screen) - product setted
-  steps:
-  - user: |
-      quero saber mais sobre um smartphone
-    intent: get_product_fact
+    - fact: fact
+  - action: action_is_fact
   - slot_was_set:
-    - product: "Mi 10T"
-  - action: utter_ask_fact
-  - user: |
-      [Tamanho de tela vertical]{"entity": "fact"}
-    intent: inform_fact
+    - is_fact: true
   - action: action_product_fact
   - action: utter_more_info
   - user: |
-      isso é tudo
-    intent: deny
-  - action: action_reset_slots
-
-- story: User wants to know factual information (Color)
-  steps:
-  - user: |
-      quero saber mais sobre um produto
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [iOS]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Cor]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      obvio que não
-    intent: deny
-  - action: action_reset_slots
-
-- story: User wants to know factual information (Color) - product setted
-  steps:
-  - user: |
-      Dúvidas sobre um produto
-    intent: get_product_fact
-  - slot_was_set:
-    - product: "Samsung J5"
-  - action: utter_ask_fact
-  - user: |
-      [Cor]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      claro, porque não
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Weight)
-  steps:
-  - user: |
-      quero mais informações sobre um celular
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [Positivo]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Peso do produto]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
+      nao, obrigado
       nem
+      nunca
+      so isso mesmo
     intent: deny
   - action: action_reset_slots
 
-- story: User wants to know factual information (Weight) - product setted
+- story: User wants to know factual information - product setted
   steps:
   - user: |
-      estou com duvidas
-    intent: get_product_fact
+      tenho uma duvida
+      queria saber mais sobre um produto
+      gostaria de informações sobre um produto
+    intent: product_doubt
+  - action: action_check_product
   - slot_was_set:
-    - product: "Smartphone Galaxy S20"
-  - action: utter_ask_fact
+    - prod_context: true
+  - action: utter_ask_doubt
   - user: |
-      [Peso do produto]{"entity": "fact"}
-    intent: inform_fact
+      tem quanto de [RAM]{"entity":"fact"}?
+      qual a capacidade [armazenamento]{"entity":"fact"}?
+      qual o [tamanho da tela]{"entity":"fact"}?
+      [quantos GB]{"entity":"fact"} de armazenamento?
+      [dimensões]{"entity":"fact"} do aparelho
+      qual o [sistema operacional]{"entity":"fact"}?
+      qual o [peso]{"entity":"fact"} do celular?
+      quanto [pesa]{"entity":"fact"}?
+      quais as [cores]{"entity":"fact"} disponíveis?
+      tem na [cor azul]{"entity":"fact"}?
+      tem [vermelho]{"entity":"fact"}?
+    intent: inform_doubt
+  - slot_was_set:
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: true
   - action: action_product_fact
   - action: utter_more_info
   - user: |
-      gostaria
+      sim
+      claro
+      gostaria, por favor
+      s
     intent: affirm
   - action: utter_menu
 
-- story: User wants to know factual information (Dimensions)
+- story: User wants to know QA information
   steps:
   - user: |
-      saber mais
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [Celular moto G]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Dimensões do produto]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      quero sim
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know factual information (Dimensions) - product setted
-  steps:
-  - user: |
-      saber mais
-    intent: get_product_fact
+      tenho uma duvida
+      queria saber mais sobre um produto
+      gostaria de informações sobre um produto
+      duvida de um produto
+    intent: product_doubt
+  - action: action_check_product
   - slot_was_set:
-    - product: "TCL"
-  - action: utter_ask_fact
-  - user: |
-      [Dimensões do produto]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      é so isso, acabou
-    intent: deny
-  - action: action_reset_slots
-
-- story: User wants to know factual information (Dimensions)
-  steps:
-  - user: |
-      saber mais
-    intent: get_product_fact
+    - prod_context: null
   - action: utter_ask_product
   - user: |
-      [Pixel 4]{"entity": "product"}
+      [OPPO]{"entity":"product"}
+      [ASUS zenphone]{"entity":"product"}
+      [Xiomi]{"entity":"product"}
     intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Marca]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      nunca mais
-    intent: deny
-  - action: action_reset_slots
-
-- story: User wants to know factual information (Brand) - product setted
-  steps:
-  - user: |
-      Você pode me tirar uma dúvida?
-    intent: get_product_fact
   - slot_was_set:
-    - product: "Galaxy S20"
-  - action: utter_ask_fact
+    - product: produto
+  - action: utter_ask_doubt
   - user: |
-      [Marca]{"entity": "fact"}
-    intent: inform_fact
-  - action: action_product_fact
-  - action: utter_more_info
-  - user: |
-      sim, agora mesmo
-    intent: affirm
-  - action: utter_menu
-
-- story: User wants to know specifications of a product that isn't a factual information
-  steps:
-  - user: |
-      Dúvidas sobre um produto?
-    intent: get_product_fact
-  - action: utter_ask_product
-  - user: |
-      [iPhone 11]{"entity": "product"}
-    intent: inform_product
-  - action: utter_ask_fact
-  - user: |
-      [Outra]{"entity": "fact"}
-    intent: inform_fact
+      Outra
+      outra coisa
+    intent: inform_doubt
+  - slot_was_set:
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: false
   - action: utter_ask_qa
   - user: |
-      [Vem com carregador?]{"entity": "question"}
+      [vem com carregador]{"entity":"question"}?
+      [vem com nota fiscal]{"entity":"question"}?
+      [vem com fones de ouvido]{"entity":"question"}?
+      [é original]{"entity":"question"}?
+      [quais acessórios vem na caixa]{"entity":"question"}?
+      [é a versão global]{"entity":"question"}?
+      [qual o prazo para entrega]{"entity":"question"}?
     intent: get_product_qa
   - action: action_product_qa
   - action: utter_more_info
   - user: |
-      nao, obrigado. Adeus!
-    intent: goodbye
-  - action: utter_goodbye
+      nao
+      nao obrigado
+      nunca
+      de jeito nenhum
+      chega
+    intent: deny
+  - action: action_reset_slots
 
-- story: User wants to know specifications of a product that isn't a factual information - product setted
+- story: User wants to QA information - product setted
   steps:
   - user: |
-      Dúvidas sobre um produto?
-    intent: get_product_fact
+      tenho uma duvida
+      queria saber mais sobre um produto
+      gostaria de informações sobre um produto
+      duvida de um produto
+    intent: product_doubt
+  - action: action_check_product
   - slot_was_set:
-    - product: "Xiaomi Poco"
-  - action: utter_ask_fact
+    - prod_context: true
+  - action: utter_ask_doubt
   - user: |
-      [Outra]{"entity": "fact"}
-    intent: inform_fact
+      Outra
+      outra coisa
+    intent: inform_doubt
+  - slot_was_set:
+    - fact: fact
+  - action: action_is_fact
+  - slot_was_set:
+    - is_fact: false
   - action: utter_ask_qa
   - user: |
-      [Qual o processador deste celular?]{"entity": "question"}
+      [qual o processador]{"entity":"question"}?
+      [vem com snapdragon]{"entity":"question"}
+      [quanto é o frete]{"entity":"question"}?
+      [entrega em pernambuco]{"entity":"question"}?
+      [roda o facecapture]{"entity":"question"}?
+      [vem com capa protetora]{"entity":"question"}?
+      [tem quantos em estoque]{"entity":"question"}?
+      [por que tão caro]{"entity":"question"}?
     intent: get_product_qa
   - action: action_product_qa
   - action: utter_more_info
   - user: |
-      Tchau!
-    intent: goodbye
-  - action: utter_goodbye
+      sim
+      por favor
+      quero
+    intent: affirm
+  - action: utter_menu
 
 - story: User requiring the price of a product
   steps:
   - user: |
-      quero saber o preço de um celular
+      quero comprar um smartphone novo
+      quanto custa um celular
+      consulta de preço
+      gostaria de saber o preço de um smartphone
+      quero comprar um aparelho
     intent: get_price
+  - action: action_check_product
+  - slot_was_set:
+    - prod_context: null
   - action: utter_ask_product
   - user: |
-      [iPhone 11]{"entity": "product"}
+      [Oneplus 8]{"entity":"product"}
+      [Google Pixel]{"entity":"product"}
+      [Xiaomi]{"entity":"product"}
+      [samsung galaxy 20]{"entity":"product"}
+      [iphone 12]{"entity":"product"}
     intent: inform_product
   - action: action_product_price
   - action: utter_more_info
   - user: |
       nao
-  - intent: deny
+      nao obrigado
+      nunca
+      de jeito nenhum
+      chega
+    intent: deny
   - action: action_reset_slots
 
 - story: User requiring the price of a product - product setted
   steps:
   - user: |
-      quanto custa um iPhone 12?
+      preço
+      queria saber o preço
+      quanto custa?
+      custa quanto?
+      gostaria de saber o preço
     intent: get_price
+  - action: action_check_product
   - slot_was_set:
-    - product: "iPhone 12"
+    - prod_context: true
   - action: action_product_price
   - action: utter_more_info
   - user: |
-      não, até logo!
-    intent: goodbye
-  - action: utter_goodbye
+      sim
+      por favor
+      quero
+    intent: affirm
+  - action: utter_menu
 
-- story: User challenges bot
+- story: User asks directly a fact of a product
   steps:
   - user: |
-      Estou falando com um humano?
-    intent: bot_challenge
-  - action: utter_iamabot
+      quanto de [RAM]{"entity":"fact"} tem o [iphone X]{"entity":"product"}
+      [memoria ram]{"entity":"fact"} do [Nokia 3310]{"entity":"product"}
+      qual o [sistema operacional]{"entity":"fact"} do [samsung galaxy s9]{"entity":"product"}
+      quantas polegadas tem a [tela]{"entity":"fact"} do novo [iphone 12]{"entity":"product"}
+      qual o [tamanho de tela]{"entity":"fact"} do [redmi note]{"entity":"product"}
+      [capacidade de armazenamento]{"entity":"fact"} do [redmi note]{"entity":"product"}
+      qual o [tamanho de tela]{"entity":"fact"} do [Xiaomi Poco]{"entity":"product"}
+      quanto [pesa]{"entity":"fact"} o [asus zenphone]{"entity":"product"}
+      qual o [peso]{"entity":"fact"} do [CARLOS PHONE1]{"entity":"product"}
+      qual o [fabricante]{"entity":"fact"} do [CARLOS PHONE2]{"entity":"product"}
+      quais as [dimensoes]{"entity":"fact"} do [CARLOS PHONE3]{"entity":"product"}
+      quais as [cores]{"entity":"fact"} disponíveis do [iPhone 11]{"entity":"product"}
+      qual a [cor]{"entity":"fact"} do [Realme]{"entity":"product"}
+    intent: get_product_fact
+  - slot_was_set:
+    - product: produto
+  - slot_was_set:
+    - fact: fact
+  - action: action_product_fact
+  - action: utter_more_info
+  - user: |
+      nem
+      deixa quieto
+      nunca
+      nao valeu
+      desisto
+    intent: deny
+  - action: action_reset_slots
+
+- story: User asks directly a QA of a product
+  steps:
+  - user: |
+      o [iphone 12]{"entity":"product"} [vem com carregador]{"entity":"question"}?
+      [samsung galazy]{"entity":"product"} [é original mesmo]{"entity":"question"}?
+      O [Realme 7]{"entity":"product"} [vem com a nota fiscal]{"entity":"question"}?
+      [qual o processador]{"entity":"question"} do [Oneplus 8]{"entity":"product"}?
+      o [Xiaomi Poco]{"entity":"product"} [é a versão global]{"entity":"question"}?
+      o [asus]{"entity":"product"} [é bom para instagram]{"entity":"question"}?
+      [qual a qualidade da câmera]{"entity":"question"} do [moto G10]{"entity":"product"}?
+      [qual a resolução da câmera]{"entity":"question"} do [LG K20]{"entity":"product"}?
+    intent: get_product_qa
+  - slot_was_set:
+    - product: produto
+  - slot_was_set:
+    - question: question
+  - action: action_product_qa
+  - action: utter_more_info
+  - user: |
+      sim
+      por favor
+      quero
+      gostaria
+    intent: affirm
+  - action: utter_menu

@@ -62,7 +62,7 @@ stories:
       [vem com teclado?]{"entity": "fact"}
     intent: inform_fact
   - slot_was_set:
-    - product: "Outra"
+    - product: produto
   - action: utter_ask_qa
   - user: |
       [vem com teclado?]{"entity": "question"}
