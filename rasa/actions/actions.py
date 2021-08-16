@@ -51,7 +51,6 @@ class ActionCheckProduct(Action):
             else:
                 return [SlotSet("prod_context", None)]
 
-
 class ActionIsFact(Action):
     def name(self) -> Text:
         return "action_is_fact"
