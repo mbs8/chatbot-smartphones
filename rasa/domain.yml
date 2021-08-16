@@ -40,73 +40,73 @@ slots:
     influence_conversation: true
 responses:
   utter_greet:
-  - buttons:
-    - payload: Verificar estoque
-      title: Pesquisar smartphone no estoque
-    - payload: Duvidas sobre um produto
-      title: Dúvidas sobre um produto
-    - payload: Consulta de preço
-      title: Consultar preço
-    button_type: vertical
-    text: Olá, sou o Celito, como posso te ajudar hoje?
+    - buttons:
+      - payload: Verificar estoque
+        title: Pesquisar smartphone no estoque
+      - payload: Duvidas sobre um produto
+        title: Dúvidas sobre um produto
+      - payload: Consulta de preço
+        title: Consultar preço
+      button_type: vertical
+      text: Olá, sou o Celito, como posso te ajudar hoje?
   utter_menu:
-  - buttons:
-    - payload: Verificar estoque
-      title: Pesquisar smartphone no estoque
-    - payload: Duvidas sobre um produto
-      title: Dúvidas sobre um produto
-    - payload: Consulta de preço
-      title: Consultar preço
-    button_type: vertical
-    text: Como posso ajudar?
+    - buttons:
+      - payload: Verificar estoque
+        title: Pesquisar smartphone no estoque
+      - payload: Duvidas sobre um produto
+        title: Dúvidas sobre um produto
+      - payload: Consulta de preço
+        title: Consultar preço
+      button_type: vertical
+      text: Como posso ajudar?
   utter_restart:
     - text: Ok! Vamos começar de novo...
   utter_goodbye:
-  - text: Até logo, foi um prazer ajudar!
-  - text: Tchau! Até a próxima!
+    - text: Até logo, foi um prazer ajudar!
+    - text: Tchau! Até a próxima!
   utter_iamabot:
-  - text: Eu sou um bot
+    - text: Eu sou um bot
   utter_default:
-  - text: Desculpe, não entendi, poderia prover mais detalhes ou usar outras palavras?
-  - text: Huumm, acho que não entendi, que tal tentar novamente?
-  - text: Desculpe, acredito que não consigo te ajudar com isto. Vamos tentar de novo?
+    - text: Desculpe, não entendi, poderia prover mais detalhes ou usar outras palavras?
+    - text: Huumm, acho que não entendi, que tal tentar novamente?
+    - text: Desculpe, acredito que não consigo te ajudar com isto. Vamos tentar de novo?
   utter_list_products:
-  - text: 'Esses são os nossos produtos: '
+    - text: 'Esses são os nossos produtos: '
   utter_ask_product:
-  - text: Claro! Qual a marca e modelo do smartphone?
-  - text: Posso te ajudar. Me informa a marca e modelo do smartphone
+    - text: Claro! Qual a marca e modelo do smartphone?
+    - text: Posso te ajudar. Me informa a marca e modelo do smartphone
   utter_ask_doubt:
-  - buttons:
-    - payload: Sistema operacional
-      title: Sistema operacional
-    - payload: RAM
-      title: Memória RAM
-    - payload: Tamanho de tela
-      title: Tamanho de tela
-    - payload: Capacidade de armazenamento
-      title: Capacidade de armazenamento
-    - payload: Cor
-      title: Cor
-    - payload: Peso do produto
-      title: Peso do produto
-    - payload: Marca
-      title: Fabricante / Marca
-    - payload: Dimensões do produto
-      title: Dimensões do produto
-    - payload: Outra
-      title: Outra
-    button_type: vertical
-    text: Sobre qual informação você gostaria de saber?
+    - buttons:
+      - payload: Sistema operacional
+        title: Sistema operacional
+      - payload: RAM
+        title: Memória RAM
+      - payload: Tamanho de tela
+        title: Tamanho de tela
+      - payload: Capacidade de armazenamento
+        title: Capacidade de armazenamento
+      - payload: Cor
+        title: Cor
+      - payload: Peso do produto
+        title: Peso do produto
+      - payload: Marca
+        title: Fabricante / Marca
+      - payload: Dimensões do produto
+        title: Dimensões do produto
+      - payload: Outra
+        title: Outra
+      button_type: vertical
+      text: Sobre qual informação você gostaria de saber?
   utter_ask_qa:
-  - text: Não encontrou sua dúvida na lista? Tudo bem! Me fala, o que deseja saber sobre o produto?
+    - text: Não encontrou sua dúvida na lista? Tudo bem! Me fala, o que deseja saber sobre o produto?
   utter_more_info:
-  - buttons:
-    - payload: sim
-      title: Sim
-    - payload: não
-      title: Não
-    button_type: vertical
-    text: Deseja saber algo mais sobre o produto?
+    - buttons:
+      - payload: sim
+        title: Sim
+      - payload: não
+        title: Não
+      button_type: vertical
+      text: Deseja saber algo mais sobre o produto?
 
 actions:
   - action_is_fact
