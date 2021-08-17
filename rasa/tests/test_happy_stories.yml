@@ -72,6 +72,8 @@ stories:
       de jeito nenhum
     intent: deny
   - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
 
 - story: User wants to know factual information
   steps:
@@ -102,7 +104,7 @@ stories:
       quais as [cores]{"entity":"fact"} disponíveis?
       tem na [cor azul]{"entity":"fact"}?
       tem [vermelho]{"entity":"fact"}?
-    intent: inform_doubt
+    intent: get_product_fact
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -117,6 +119,8 @@ stories:
       so isso mesmo
     intent: deny
   - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
 
 - story: User wants to know factual information - product setted
   steps:
@@ -141,7 +145,7 @@ stories:
       quais as [cores]{"entity":"fact"} disponíveis?
       tem na [cor azul]{"entity":"fact"}?
       tem [vermelho]{"entity":"fact"}?
-    intent: inform_doubt
+    intent: get_product_fact
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -206,6 +210,8 @@ stories:
       chega
     intent: deny
   - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
 
 - story: User wants to QA information - product setted
   steps:
@@ -251,7 +257,7 @@ stories:
 - story: User requiring the price of a product
   steps:
   - user: |
-      quero comprar um smartphone novo
+      quero comprar um smartphone
       quanto custa um celular
       consulta de preço
       gostaria de saber o preço de um smartphone
@@ -278,6 +284,8 @@ stories:
       chega
     intent: deny
   - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
 
 - story: User requiring the price of a product - product setted
   steps:
@@ -311,9 +319,9 @@ stories:
       [capacidade de armazenamento]{"entity":"fact"} do [redmi note]{"entity":"product"}
       qual o [tamanho de tela]{"entity":"fact"} do [Xiaomi Poco]{"entity":"product"}
       quanto [pesa]{"entity":"fact"} o [asus zenphone]{"entity":"product"}
-      qual o [peso]{"entity":"fact"} do [CARLOS PHONE1]{"entity":"product"}
-      qual o [fabricante]{"entity":"fact"} do [CARLOS PHONE2]{"entity":"product"}
-      quais as [dimensoes]{"entity":"fact"} do [CARLOS PHONE3]{"entity":"product"}
+      qual o [peso]{"entity":"fact"} do [Redmi note 10]{"entity":"product"}
+      qual o [fabricante]{"entity":"fact"} do [samsung J6]{"entity":"product"}
+      quais as [dimensoes]{"entity":"fact"} do [Google pixel]{"entity":"product"}
       quais as [cores]{"entity":"fact"} disponíveis do [iPhone 11]{"entity":"product"}
       qual a [cor]{"entity":"fact"} do [Realme]{"entity":"product"}
     intent: get_product_fact
@@ -331,6 +339,8 @@ stories:
       desisto
     intent: deny
   - action: action_reset_slots
+  - action: utter_restart
+  - action: utter_menu
 
 - story: User asks directly a QA of a product
   steps:
