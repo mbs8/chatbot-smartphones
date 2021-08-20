@@ -76,8 +76,11 @@ nlu:
     - como vai
     - tudo bem
     - ola
+    
+- intent: start
+  examples: |
     - start
-    - /start
+
 - intent: goodbye
   examples: |
     - tchau

@@ -6,6 +6,11 @@ stories:
   - intent: greet
   - action: utter_greet
 
+- story: user greets and start conversation
+  steps:
+  - intent: start
+  - action: utter_greet
+
 - story: User ask for help
   steps:
   - intent: ask_help
