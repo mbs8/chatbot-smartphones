@@ -11,8 +11,8 @@ intents:
   - check_stock
   - out_of_scope
   - nlu_fallback
-  - inform_doubt
-  - product_doubt
+  - inform_question
+  - product_question
   - goodbye
   - affirm
   - deny
@@ -64,6 +64,7 @@ responses:
   utter_goodbye:
     - text: Até logo, foi um prazer ajudar!
     - text: Tchau! Até a próxima!
+    - text: Estou à disposição para ajudar uma próxima vez. Até logo!
   utter_iamabot:
     - text: Eu sou um bot
   utter_default:
@@ -75,7 +76,7 @@ responses:
   utter_ask_product:
     - text: Claro! Qual a marca e modelo do smartphone?
     - text: Posso te ajudar. Me informa a marca e modelo do smartphone
-  utter_ask_doubt:
+  utter_ask_question:
     - buttons:
       - payload: Sistema operacional
         title: Sistema operacional

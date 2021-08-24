@@ -81,7 +81,7 @@ stories:
       tenho uma duvida
       queria saber mais sobre um produto
       gostaria de informações sobre um produto
-    intent: product_doubt
+    intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: null
@@ -91,7 +91,7 @@ stories:
       [ASUS zenphone]{"entity":"product"}
       [Xiomi]{"entity":"product"}
     intent: inform_product
-  - action: utter_ask_doubt
+  - action: utter_ask_question
   - user: |
       tem quanto de [RAM]{"entity":"fact"}?
       qual a capacidade [armazenamento]{"entity":"fact"}?
@@ -128,11 +128,11 @@ stories:
       tenho uma duvida
       queria saber mais sobre um produto
       gostaria de informações sobre um produto
-    intent: product_doubt
+    intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: true
-  - action: utter_ask_doubt
+  - action: utter_ask_question
   - user: |
       tem quanto de [RAM]{"entity":"fact"}?
       qual a capacidade [armazenamento]{"entity":"fact"}?
@@ -168,7 +168,7 @@ stories:
       queria saber mais sobre um produto
       gostaria de informações sobre um produto
       duvida de um produto
-    intent: product_doubt
+    intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: null
@@ -180,11 +180,11 @@ stories:
     intent: inform_product
   - slot_was_set:
     - product: produto
-  - action: utter_ask_doubt
+  - action: utter_ask_question
   - user: |
       Outra
       outra coisa
-    intent: inform_doubt
+    intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -220,15 +220,15 @@ stories:
       queria saber mais sobre um produto
       gostaria de informações sobre um produto
       duvida de um produto
-    intent: product_doubt
+    intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: true
-  - action: utter_ask_doubt
+  - action: utter_ask_question
   - user: |
       Outra
       outra coisa
-    intent: inform_doubt
+    intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact

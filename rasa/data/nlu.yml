@@ -10,12 +10,14 @@ nlu:
     - memória
     - capacidade da RAM
 
-- synonym: Sistema Operacional
+- synonym: Sistema operacional
   examples: |
     - SO
     - OS
     - sistema op
     - sistema operacional
+    - Sistema Operacional
+    - sistema Operacional
 
 - synonym: Capacidade de armazenamento
   examples: |
@@ -76,7 +78,7 @@ nlu:
     - como vai
     - tudo bem
     - ola
-    
+
 - intent: start
   examples: |
     - start
@@ -133,7 +135,7 @@ nlu:
     - não quero
     - não é bem isso
     - desisto
-- intent: product_doubt
+- intent: product_question
   examples: |
     - Duvidas sobre um produto
     - tenho duvidas sobre um produto
@@ -304,7 +306,7 @@ nlu:
     - [TCL L5](product)
     - [Huawei](product)
     - [Huawei P40](product)
-- intent: inform_doubt
+- intent: inform_question
   examples: |
     - [RAM](fact)
     - [Sistema operacional](fact)

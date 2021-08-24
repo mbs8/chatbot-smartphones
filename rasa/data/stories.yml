@@ -42,14 +42,14 @@ stories:
 
 - story: User wants to know factual information
   steps:
-  - intent: product_doubt
+  - intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: null
   - action: utter_ask_product
   - intent: inform_product
-  - action: utter_ask_doubt
-  - intent: inform_doubt
+  - action: utter_ask_question
+  - intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -62,12 +62,12 @@ stories:
 
 - story: User wants to know factual information - product setted
   steps:
-  - intent: product_doubt
+  - intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: true
-  - action: utter_ask_doubt
-  - intent: inform_doubt
+  - action: utter_ask_question
+  - intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -80,7 +80,7 @@ stories:
 
 - story: User wants to know QA information
   steps:
-  - intent: product_doubt
+  - intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: null
@@ -88,8 +88,8 @@ stories:
   - intent: inform_product
   - slot_was_set:
     - product: produto
-  - action: utter_ask_doubt
-  - intent: inform_doubt
+  - action: utter_ask_question
+  - intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
@@ -104,12 +104,12 @@ stories:
 
 - story: User wants to QA information - product setted
   steps:
-  - intent: product_doubt
+  - intent: product_question
   - action: action_check_product
   - slot_was_set:
     - prod_context: true
-  - action: utter_ask_doubt
-  - intent: inform_doubt
+  - action: utter_ask_question
+  - intent: inform_question
   - slot_was_set:
     - fact: fact
   - action: action_is_fact
