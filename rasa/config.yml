@@ -15,6 +15,10 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
     constrain_similarities: true
+    tensorboard_log_directory: "tensorboard"
+    tensorboard_log_level: "epoch"
+    evaluate_on_number_of_examples: 30
+    evaluate_every_number_of_epochs: 5
   - name: EntitySynonymMapper
   - name: ResponseSelector
     epochs: 100
