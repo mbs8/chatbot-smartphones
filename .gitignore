@@ -143,3 +143,6 @@ rasa/results
 
 # logs and pid files
 logs
+
+# tensorboard results
+tensorboard
